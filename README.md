@@ -100,7 +100,9 @@ USER = "admin"
 
 PWD = "admin"
 
-DATASET_ID = 12 # change to your dataset id REFERENCE_CSV = "reference_expected.csv"
+DATASET_ID = 12 # change to your dataset id 
+
+REFERENCE_CSV = "reference_expected.csv" (Exemple to check if the code works)
 
 s = requests.Session() r = s.post(f"{BASE}/api/v1/security/login", json={"provider":"db","username":USER,"password":PWD,"refresh":True}, timeout=30) r.raise_for_status()
 
