@@ -28,9 +28,10 @@ docker info
 
 <img width="12" height="2" alt="image" src="https://github.com/user-attachments/assets/13914991-c531-4909-bc46-b932e559c4b1" />
 
+**cd C:\Users\ git clone https://github.com/apache/superset.git**
 
-**cd C:\Users\ git clone https://github.com/apache/superset.git 
-cd C:\Users\\superset docker compose -f docker-compose-non-dev.yml 
+**cd C:\Users\\superset docker compose -f docker-compose-non-dev.yml 
+**
 pull docker compose -f docker-compose-non-dev.yml up -d**
 
 Check services:
