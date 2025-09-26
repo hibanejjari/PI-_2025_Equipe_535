@@ -47,8 +47,11 @@ THEN create 2 files that you name **superset_check.py** (to edit based on the da
 **In short**
 
 Start Docker + Superset (**docker compose -f docker-compose-non-dev.yml up -d**).
+
 Create dataset + dashboard in Superset.
+
 Save your expected results as reference_expected.csv in your project folder.
+
 Run the Python script (python superset_check.py) from the same folder., 
 
 **3)	Load Examples**
