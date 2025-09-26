@@ -43,7 +43,9 @@ Open **http://localhost:8088**
 
 <img width="962" height="59" alt="image" src="https://github.com/user-attachments/assets/54e3a664-329f-46b2-bdb1-8b31581b101a" />
 
-Default credentials: Username **admin** / Password **admin** (you can change them in the py file if you wish)
+Default credentials: 
+
+Username **admin** / Password **admin** (you can change them in the py file if you wish)
 
 THEN create 2 files that you name **superset_check.py** (to edit based on the database given) and **reference_expected.csv**(find them on Teams files)	
 
@@ -60,8 +62,10 @@ Run the Python script (python superset_check.py) from the same folder.,
 **3)	Load Examples**
 
 Run inside the app container: docker compose exec superset_app superset load_examples
+
 Initialize (usually already done):
-docker compose exec superset_app superset init
+
+**docker compose exec superset_app superset init**
 
 **4)	Add The First Dataset**
 
