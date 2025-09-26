@@ -131,9 +131,7 @@ ds,value 2025-01-01,100
   	
 **7)	CI/CD Skeleton (GitLab)**
 
-**Test file**
-
-### test_validation.py 
+**Test file** : ### test_validation.py 
 
 import pandas as pd
 
