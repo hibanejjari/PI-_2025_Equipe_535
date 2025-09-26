@@ -74,13 +74,19 @@ POST /api/v1/chart/data → execute chart queries
 Find your dataset id in the Explore URL (…?dataset=12…)
 
 **How we protect the data :**
+
 🔹 Secure Access & Authentication
+
 We restrict access to Superset through user accounts and role-based permissions. Each user has credentials, and roles ensure that sensitive dashboards or datasets are only visible to authorized people. This prevents unauthorized access.
 ________________________________________
+
 🔹 Data Connections with Least Privilege
+
 Superset connects to databases using read-only accounts. This means users can query and visualize data but cannot modify or delete it. Access to the underlying data sources is minimized to reduce risks.
 ________________________________________
+
 🔹 Network & Encryption
+
 When deployed in production, Superset is placed behind a secure network (VPN or firewall) and served via HTTPS. This ensures that data in transit between the user’s browser and Superset is encrypted, protecting confidential information from interception
 
 
