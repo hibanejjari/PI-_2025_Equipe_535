@@ -70,7 +70,7 @@ ________________________________________
 When deployed in production, Superset is placed behind a secure network (VPN or firewall) and served via HTTPS. This ensures that data in transit between the user’s browser and Superset is encrypted, protecting confidential information from interception
 
 
-6)	Python Proof of Concept – Validate Dashboard Data
+**6)	Python Proof of Concept – Validate Dashboard Data**
 import requests, pandas as pd
 BASE = "http://localhost:8088"
 USER = "admin"
@@ -78,38 +78,51 @@ PWD = "admin"
 DATASET_ID = 12 # change to your dataset id REFERENCE_CSV = "reference_expected.csv"
 s = requests.Session() r = s.post(f"{BASE}/api/v1/security/login", json={"provider":"db","username":USER,"password":PWD,"refresh":True}, timeout=30) r.raise_for_status()
 s.headers.update({"Authorization": f"Bearer {r.json()['access_token']}"})
+
 csrf = s.get(f"{BASE}/api/v1/security/csrf_token", timeout=30).json().get("result")
+
 s.headers.update({"X-CSRFToken": csrf})
+
 data = s.get(f"{BASE}/api/v1/dataset/{DATASET_ID}/data", params={"format":"json","row_limit":1000}, timeout=60).json() df_superset = pd.DataFrame(data)
+
 df_ref = pd.read_csv(REFERENCE_CSV)
+
 JOIN_KEYS = ["ds"] # change to your join keys VALUE_COL = "value" # change to your metric column
-merged = df_superset[JOIN_KEYS+[VALUE_COL]].merge( df_ref[JOIN_KEYS+[VALUE_COL]], on=JOIN_KEYS, how="outer", suffixes=("_superset","_ref") ) merged["delta"] = merged[f"{VALUE_COL}_superset"] - merged[f"{VALUE_COL}_ref"] merged["status"] = merged.apply( lambda r: "missing_in_ref" if pd.notna(r[f"{VALUE_COL}_superset"]) and pd.isna(r[f"{VALUE_COL}_ref"]) else ("missing_in_superset" if pd.isna(r[f"{VALUE_COL}_superset"]) and pd.notna(r[f"{VALUE_COL}_ref"]) else ("mismatch" if pd.notna(r["delta"]) and abs(r["delta"])>1e-9 else "match")), axis=1)
+
+merged = df_superset[JOIN_KEYS+[VALUE_COL]].merge( df_ref[JOIN_KEYS+[VALUE_COL]], on=JOIN_KEYS, how="outer", suffixes=("_superset","_ref") ) merged["delta"] = merged[f"{VALUE_COL}_superset"] - merged[f"{VALUE_COL}_ref"] merged["status"] = merged.apply( lambda r: 
+
+"missing_in_ref" if pd.notna(r[f"{VALUE_COL}_superset"]) and pd.isna(r[f"{VALUE_COL}_ref"]) else ("missing_in_superset" if pd.isna(r[f"{VALUE_COL}_superset"]) and pd.notna(r[f"{VALUE_COL}_ref"]) else ("mismatch" if pd.notna(r["delta"]) and abs(r["delta"])>1e-9 else "match")), axis=1)
+
 merged.to_csv("superset_vs_reference_report.csv", index=False) print(merged["status"].value_counts())
+
 Reference CSV template (reference_expected.csv):
 ds,value 2025-01-01,100
-2025-01-02,120 Run the script: python superset_check.py
-  	
-8)	CI/CD Skeleton (GitLab)
-Test file
 
-# test_validation.py import pandas as pd
+**Run the script:** python superset_check.py
+  	
+**7)	CI/CD Skeleton (GitLab)**
+**Test file**
+
+### test_validation.py import pandas as pd
 def test_no_mismatches():
 df = pd.read_csv("superset_vs_reference_report.csv")
 assert not (df["status"] == "mismatch").any(), "Mismatches detected in dashboard data" Pipeline file:
-# .gitlab-ci.yml image: python:3.11-slim
+### .gitlab-ci.yml image: python:3.11-slim
 before_script: - pip install requests pandas pytest python-dotenv
 stages: [validate]
 validate:
-stage: validate script: - python superset_check.py
+stage: 
+- validate script: - python superset_check.py
 - pytest -q
-- 
-8)	Troubleshooting
+  
+**8)	Troubleshooting**
+  
 1	ConnectionRefusedError to localhost:8088 — Superset not running. Start: docker compose -f docker-compose-non-dev.yml up -d
 2	Pipe not found / cannot pull images — Start Docker Desktop; enable WSL 2 backend; verify with docker run hello-world.
 3	Auth failed — Update USER/PWD to your Superset admin credentials.
 4	Port 8088 in use — Edit docker-compose-non-dev.yml and change host port (e.g., 8090:8088).
   
-9)	Useful Links 
+**9)	Useful Links**
 1	Superset Docs: https://superset.apache.org/docs/
 2	API Overview: https://superset.apache.org/docs/api
 3	GitHub Repo: https://github.com/apache/superset
