@@ -35,7 +35,9 @@ Check services:
 
 docker compose ps
 docker compose logs -f 
+
 Open **http://localhost:8088**
+
 <img width="962" height="59" alt="image" src="https://github.com/user-attachments/assets/54e3a664-329f-46b2-bdb1-8b31581b101a" />
 
 Default credentials: Username **admin** / Password **admin** (you can change them in the py file if you wish)
