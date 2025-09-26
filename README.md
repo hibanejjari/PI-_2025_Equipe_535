@@ -24,6 +24,11 @@ In your main terminal after opening docker run :
 
 Open PowerShell and run:
 
+docker info
+
+<img width="12" height="2" alt="image" src="https://github.com/user-attachments/assets/13914991-c531-4909-bc46-b932e559c4b1" />
+
+
 **cd C:\Users\ git clone https://github.com/apache/superset.git cd C:\Users\\superset docker compose -f docker-compose-non-dev.yml pull docker compose -f docker-compose-non-dev.yml up -d**
 
 Check services:
@@ -42,7 +47,7 @@ THEN create 2 files that you name **superset_check.py** (to edit based on the da
 Start Docker + Superset (**docker compose -f docker-compose-non-dev.yml up -d**).
 Create dataset + dashboard in Superset.
 Save your expected results as reference_expected.csv in your project folder.
-Run the Python script (python superset_check.py) from the same folder.,
+Run the Python script (python superset_check.py) from the same folder., 
 
 **3)	Load Examples**
 
@@ -130,3 +135,63 @@ stage:
 1	Superset Docs: https://superset.apache.org/docs/
 2	API Overview: https://superset.apache.org/docs/api
 3	GitHub Repo: https://github.com/apache/superset
+
+## Once we have the right database : (what we need to modify)
+In Superset (one-time setup)
+
+Add the real DB connection: Settings → Data → Databases → + Database (provide SQLAlchemy URI, creds, SSL, etc.).
+
+Expose your tables as Datasets: Data → Datasets → + Dataset (pick database, schema, table).
+
+Permissions: ensure your user/role can read that database & datasets.
+
+## In the script :
+We need to update the variables **( fill out the TODO LINES)** ALL TO DO ON THE PYTHON FILE AND EXECUTE USING **python superset_fetch.py**
+
+
+import requests
+import pandas as pd
+import json
+
+# ==============================
+# CONFIG (TODO: update later)
+# ==============================
+BASE = "https://your-superset.company.com/superset"   # TODO: your Superset URL (include /superset if needed)
+USER = "your_user"                                     # TODO: your Superset username
+PWD  = "your_password"                                 # TODO: your Superset password
+DATASET_ID = 0                                         # TODO: put dataset id once dataset is created in Superset
+
+# ==============================
+# LOGIN
+# ==============================
+session = requests.Session()
+login = session.post(
+    f"{BASE}/api/v1/security/login",
+    json={"username": USER, "password": PWD, "provider": "db", "refresh": True},
+    timeout=30,
+)
+login.raise_for_status()
+print("Logged in")
+
+# ==============================
+# QUERY (edit once you know real columns)
+# ==============================
+payload = {
+    "datasource": {"id": DATASET_ID, "type": "table"},
+    "queries": [{
+        "columns": ["col1", "col2", "col3"],  # TODO: replace with real column names
+        "metrics": [],                        # or add at least one metric if no columns
+        "filters": [],                        # TODO: add filters if needed
+        "orderby": [],
+        "row_limit": 1000
+    }],
+    "result_format": "json",
+    "result_type": "results",
+}
+
+data_resp = session.post(f"{BASE}/api/v1/chart/data", json=payload, timeout=60)
+data_resp.raise_for_status()
+
+rows = data_resp.json()["result"][0]["data"]
+df_superset = pd.DataFrame(rows)
+print("\n Sample data:\n", df_superset.head())
