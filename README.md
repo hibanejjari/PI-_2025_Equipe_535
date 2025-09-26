@@ -28,16 +28,16 @@ docker info
 
 <img width="12" height="2" alt="image" src="https://github.com/user-attachments/assets/13914991-c531-4909-bc46-b932e559c4b1" />
 
-``` cd C:\Users\ git clone https://github.com/apache/superset.git ```
+```cd C:\Users\ git clone https://github.com/apache/superset.git ```
 
-``` cd C:\Users\\superset docker compose -f docker-compose-non-dev.yml```
+```cd C:\Users\\superset docker compose -f docker-compose-non-dev.yml```
 
 ```pull docker compose -f docker-compose-non-dev.yml up -d ```
 
 Check services:
 
-```docker compose ps
-docker compose logs -f ```
+```docker compose ps```
+```docker compose logs -f```
 
 Open
 ```http://localhost:8088```
@@ -65,8 +65,7 @@ Run the Python script (python superset_check.py) from the same folder.,
 Run inside the app container: docker compose exec superset_app superset load_examples
 
 Initialize (usually already done):
-
-**docker compose exec superset_app superset init**
+```docker compose exec superset_app superset init```
 
 **4)	Add The First Dataset**
 
@@ -76,20 +75,20 @@ Initialize (usually already done):
 
 **5)	Superset API Basics**
 
-POST /api/v1/security/login → get access token
+```POST /api/v1/security/login``` → get access token
 
-GET /api/v1/security/csrf_token → get CSRF token
+```GET /api/v1/security/csrf_token``` → get CSRF token
 
-GET /api/v1/dataset/{id}/data?format=json → fetch rows
+```GET /api/v1/dataset/{id}/data?format=json``` → fetch rows
 
-POST /api/v1/chart/data → execute chart queries
+```POST /api/v1/chart/data``` → execute chart queries
 
 Find your dataset id in the Explore URL (…?dataset=12…) (WE will have it once Vinci Energy gives it to us)
 
 
 **6)	Python Proof of Concept – Validate Dashboard Data**
 
-import requests, pandas as pd
+```import requests, pandas as pd
 
 BASE = "http://localhost:8088"
 
@@ -122,9 +121,10 @@ merged = df_superset[JOIN_KEYS+[VALUE_COL]].merge( df_ref[JOIN_KEYS+[VALUE_COL]]
 merged.to_csv("superset_vs_reference_report.csv", index=False) print(merged["status"].value_counts())
 
 Reference CSV template (reference_expected.csv):
-ds,value 2025-01-01,100
+ds,value 2025-01-01,100```
 
-**Run the script:** python superset_check.py
+**Run the script:**
+```python superset_check.py```
   	
 **7)	CI/CD Skeleton (GitLab)**
 
