@@ -4,20 +4,20 @@
 
 ### 1)	Prerequisites
 
-1	Windows 10/11 with admin rights
+-	Windows 10/11 with admin rights
 
-2	Docker Desktop installed and running (WSL 2 backend enabled)
+-	Docker Desktop installed and running (WSL 2 backend enabled)
 
-3	Git installed
+-	Git installed
 
-4	Python 3.11 installed (ok if 3.13 is also present) 
+- Python 3.11 installed (ok if 3.13 is also present) 
 
-5 A web browser (Chrome/Edge)
+- Chrome or Edge
 
 Verify Docker:
 
 In your main terminal after opening docker run : 
-docker version docker run hello-world
+**docker version docker run hello-world**
 
 
 **2)	Get and Run Superset with Docker**
@@ -29,13 +29,15 @@ Open PowerShell and run:
 Check services:
 
 docker compose ps
-docker compose logs -f # optional
+docker compose logs -f 
 Open **http://localhost:8088**
-Default credentials: Username **admin** / Password **admin**
+<img width="962" height="59" alt="image" src="https://github.com/user-attachments/assets/54e3a664-329f-46b2-bdb1-8b31581b101a" />
+
+Default credentials: Username **admin** / Password **admin** (you can change them in the py file if you wish)
 
 THEN create 2 files that you name **superset_check.py** (to edit based on the database given) and **reference_expected.csv**(find them on Teams files)	
 
-In short 
+**In short**
 
 Start Docker + Superset (**docker compose -f docker-compose-non-dev.yml up -d**).
 Create dataset + dashboard in Superset.
