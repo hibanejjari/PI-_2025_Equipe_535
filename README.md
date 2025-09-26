@@ -188,43 +188,58 @@ import json
 # CONFIG (TODO: update later)
 
 BASE = "https://your-superset.company.com/superset"   # TODO: your Superset URL (include /superset if needed)
+
 USER = "your_user"                                     # TODO: your Superset username
+
 PWD  = "your_password"                                 # TODO: your Superset password
+
 DATASET_ID = 0                                         # TODO: put dataset id once dataset is created in Superset
 
 
 # LOGIN
 
 session = requests.Session()
+
 login = session.post(
+
     f"{BASE}/api/v1/security/login",
     json={"username": USER, "password": PWD, "provider": "db", "refresh": True},
     timeout=30,
 )
+
 login.raise_for_status()
+
 print("Logged in")
 
 
 # QUERY (edit once you know real columns)
 
 payload = {
+
     "datasource": {"id": DATASET_ID, "type": "table"},
+    
     "queries": [{
+    
         "columns": ["col1", "col2", "col3"],  # TODO: replace with real column names
         "metrics": [],                        # or add at least one metric if no columns
         "filters": [],                        # TODO: add filters if needed
         "orderby": [],
         "row_limit": 1000
     }],
+    
     "result_format": "json",
+    
     "result_type": "results",
 }
 
 data_resp = session.post(f"{BASE}/api/v1/chart/data", json=payload, timeout=60)
+
 data_resp.raise_for_status()
 
 rows = data_resp.json()["result"][0]["data"]
+
 df_superset = pd.DataFrame(rows)
+
 print("\n Sample data:\n", df_superset.head())
 
 
