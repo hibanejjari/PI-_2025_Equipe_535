@@ -91,6 +91,7 @@ When deployed in production, Superset is placed behind a secure network (VPN or 
 
 
 **6)	Python Proof of Concept – Validate Dashboard Data**
+
 import requests, pandas as pd
 BASE = "http://localhost:8088"
 USER = "admin"
@@ -121,13 +122,19 @@ ds,value 2025-01-01,100
 **Run the script:** python superset_check.py
   	
 **7)	CI/CD Skeleton (GitLab)**
+
 **Test file**
 
-### test_validation.py import pandas as pd
+### test_validation.py 
+
+import pandas as pd
+
 def test_no_mismatches():
 df = pd.read_csv("superset_vs_reference_report.csv")
 assert not (df["status"] == "mismatch").any(), "Mismatches detected in dashboard data" Pipeline file:
+
 ### .gitlab-ci.yml image: python:3.11-slim
+
 before_script: - pip install requests pandas pytest python-dotenv
 stages: [validate]
 validate:
@@ -143,11 +150,13 @@ stage:
 4	Port 8088 in use — Edit docker-compose-non-dev.yml and change host port (e.g., 8090:8088).
   
 **9)	Useful Links**
+
 1	Superset Docs: https://superset.apache.org/docs/
 2	API Overview: https://superset.apache.org/docs/api
 3	GitHub Repo: https://github.com/apache/superset
 
-## Once we have the right database : (what we need to modify)
+# Once we have the right database : (what we need to modify)
+
 In Superset (one-time setup)
 
 Add the real DB connection: Settings → Data → Databases → + Database (provide SQLAlchemy URI, creds, SSL, etc.).
@@ -157,6 +166,7 @@ Expose your tables as Datasets: Data → Datasets → + Dataset (pick database, 
 Permissions: ensure your user/role can read that database & datasets.
 
 ## In the script :
+
 We need to update the variables **( fill out the TODO LINES)** ALL TO DO ON THE PYTHON FILE AND EXECUTE USING **python superset_fetch.py**
 
 
