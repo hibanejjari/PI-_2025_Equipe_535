@@ -258,7 +258,7 @@ payload = {
 }
 
 data_resp = session.post(f"{BASE}/api/v1/chart/data", json=payload, timeout=60)
-data_resp.raise_for_status()
+data_resp.raise_for_status()```
 
 ## 🔒 Security
 
