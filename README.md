@@ -260,6 +260,20 @@ payload = {
 data_resp = session.post(f"{BASE}/api/v1/chart/data", json=payload, timeout=60)
 data_resp.raise_for_status()
 
+## 🔒 Security
+
+### 1) Access Control & Authentication
+- **RBAC**: Use Superset roles (Admin, Alpha, Gamma) and create custom roles as needed. Grant only what’s necessary.
+- **SSO/MFA**: Prefer SSO (OIDC/SAML/LDAP) with MFA over local accounts.
+- **Strong secrets**: Set a strong `SUPERSET_SECRET_KEY` and rotate credentials regularly.
+
+```bash
+# .env (example)
+SUPERSET_SECRET_KEY=replace_with_long_random_string
+ADMIN_USERNAME=admin
+ADMIN_PASSWORD=changeMeNow!
+
+
 rows = data_resp.json()["result"][0]["data"]
 df_superset = pd.DataFrame(rows)
 print("\nSample data:\n", df_superset.head())
