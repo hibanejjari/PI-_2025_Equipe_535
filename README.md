@@ -1,1 +1,92 @@
 # PI-_2025_Equipe_535
+
+# Apache Superset – Project 110 Guide (Windows)
+DataOps & Data Quality – Strong Supervision of Analytics Dashboards
+working setup, including installation, sample data, first dashboard, Python POC for validation, and CI/CD skeleton.
+# 1)	Prerequisites
+1	Windows 10/11 with admin rights
+2	Docker Desktop installed and running (WSL 2 backend enabled)
+3	Git installed
+4	Python 3.11 installed (ok if 3.13 is also present) 5 A web browser (Chrome/Edge)
+Verify Docker:
+In your main terminal after opening docker run : 
+docker version docker run hello-world
+2)	Get and Run Superset with Docker
+Open PowerShell and run:
+cd C:\Users\ git clone https://github.com/apache/superset.git cd C:\Users\\superset docker compose -f docker-compose-non-dev.yml pull docker compose -f docker-compose-non-dev.yml up -d
+Check services:
+docker compose ps
+docker compose logs -f # optional
+Open http://localhost:8088
+Default credentials: Username admin / Password admin
+
+THEN create 2 files that you name superset_check.py (to edit based on the database given) and reference_expected.csv (find them on Teams files)	
+In short 
+Start Docker + Superset (docker compose -f docker-compose-non-dev.yml up -d).
+Create dataset + dashboard in Superset.
+Save your expected results as reference_expected.csv in your project folder.
+Run the Python script (python superset_check.py) from the same folder.,
+3)	Load Examples 
+Run inside the app container: docker compose exec superset_app superset load_examples
+Initialize (usually already done):
+docker compose exec superset_app superset init
+4)	Add The First Dataset
+1	In Superset UI → Data → Datasets → + Dataset.
+2	Choose a database (like Postgres in the stack) or upload a CSV.
+3	Create a chart and add it to a dashboard.
+5)	Superset API Basics
+POST /api/v1/security/login → get access token
+GET /api/v1/security/csrf_token → get CSRF token
+GET /api/v1/dataset/{id}/data?format=json → fetch rows
+POST /api/v1/chart/data → execute chart queries
+Find your dataset id in the Explore URL (…?dataset=12…)
+
+How we protect the data : 
+🔹 Secure Access & Authentication
+We restrict access to Superset through user accounts and role-based permissions. Each user has credentials, and roles ensure that sensitive dashboards or datasets are only visible to authorized people. This prevents unauthorized access.
+________________________________________
+🔹 Data Connections with Least Privilege
+Superset connects to databases using read-only accounts. This means users can query and visualize data but cannot modify or delete it. Access to the underlying data sources is minimized to reduce risks.
+________________________________________
+🔹 Network & Encryption
+When deployed in production, Superset is placed behind a secure network (VPN or firewall) and served via HTTPS. This ensures that data in transit between the user’s browser and Superset is encrypted, protecting confidential information from interception 
+6)	Python Proof of Concept – Validate Dashboard Data
+import requests, pandas as pd
+BASE = "http://localhost:8088"
+USER = "admin"
+PWD = "admin"
+DATASET_ID = 12 # change to your dataset id REFERENCE_CSV = "reference_expected.csv"
+s = requests.Session() r = s.post(f"{BASE}/api/v1/security/login", json={"provider":"db","username":USER,"password":PWD,"refresh":True}, timeout=30) r.raise_for_status()
+s.headers.update({"Authorization": f"Bearer {r.json()['access_token']}"})
+csrf = s.get(f"{BASE}/api/v1/security/csrf_token", timeout=30).json().get("result")
+s.headers.update({"X-CSRFToken": csrf})
+data = s.get(f"{BASE}/api/v1/dataset/{DATASET_ID}/data", params={"format":"json","row_limit":1000}, timeout=60).json() df_superset = pd.DataFrame(data)
+df_ref = pd.read_csv(REFERENCE_CSV)
+JOIN_KEYS = ["ds"] # change to your join keys VALUE_COL = "value" # change to your metric column
+merged = df_superset[JOIN_KEYS+[VALUE_COL]].merge( df_ref[JOIN_KEYS+[VALUE_COL]], on=JOIN_KEYS, how="outer", suffixes=("_superset","_ref") ) merged["delta"] = merged[f"{VALUE_COL}_superset"] - merged[f"{VALUE_COL}_ref"] merged["status"] = merged.apply( lambda r: "missing_in_ref" if pd.notna(r[f"{VALUE_COL}_superset"]) and pd.isna(r[f"{VALUE_COL}_ref"]) else ("missing_in_superset" if pd.isna(r[f"{VALUE_COL}_superset"]) and pd.notna(r[f"{VALUE_COL}_ref"]) else ("mismatch" if pd.notna(r["delta"]) and abs(r["delta"])>1e-9 else "match")), axis=1)
+merged.to_csv("superset_vs_reference_report.csv", index=False) print(merged["status"].value_counts())
+Reference CSV template (reference_expected.csv):
+ds,value 2025-01-01,100
+2025-01-02,120 Run the script: python superset_check.py
+7)	CI/CD Skeleton (GitLab)
+Test file
+
+# test_validation.py import pandas as pd
+def test_no_mismatches():
+df = pd.read_csv("superset_vs_reference_report.csv")
+assert not (df["status"] == "mismatch").any(), "Mismatches detected in dashboard data" Pipeline file:
+# .gitlab-ci.yml image: python:3.11-slim
+before_script: - pip install requests pandas pytest python-dotenv
+stages: [validate]
+validate:
+stage: validate script: - python superset_check.py
+- pytest -q
+8)	Troubleshooting
+1	ConnectionRefusedError to localhost:8088 — Superset not running. Start: docker compose -f docker-compose-non-dev.yml up -d
+2	Pipe not found / cannot pull images — Start Docker Desktop; enable WSL 2 backend; verify with docker run hello-world.
+3	Auth failed — Update USER/PWD to your Superset admin credentials.
+4	Port 8088 in use — Edit docker-compose-non-dev.yml and change host port (e.g., 8090:8088).
+9)	Useful Links
+1	Superset Docs: https://superset.apache.org/docs/
+2	API Overview: https://superset.apache.org/docs/api
+3	GitHub Repo: https://github.com/apache/superset
