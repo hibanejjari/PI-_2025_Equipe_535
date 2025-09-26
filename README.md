@@ -93,11 +93,17 @@ When deployed in production, Superset is placed behind a secure network (VPN or 
 **6)	Python Proof of Concept – Validate Dashboard Data**
 
 import requests, pandas as pd
+
 BASE = "http://localhost:8088"
+
 USER = "admin"
+
 PWD = "admin"
+
 DATASET_ID = 12 # change to your dataset id REFERENCE_CSV = "reference_expected.csv"
+
 s = requests.Session() r = s.post(f"{BASE}/api/v1/security/login", json={"provider":"db","username":USER,"password":PWD,"refresh":True}, timeout=30) r.raise_for_status()
+
 s.headers.update({"Authorization": f"Bearer {r.json()['access_token']}"})
 
 csrf = s.get(f"{BASE}/api/v1/security/csrf_token", timeout=30).json().get("result")
