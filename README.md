@@ -258,23 +258,33 @@ payload = {
 }
 
 data_resp = session.post(f"{BASE}/api/v1/chart/data", json=payload, timeout=60)
-data_resp.raise_for_status()```
-
-## 🔒 Security
-
-### 1) Access Control & Authentication
-- **RBAC**: Use Superset roles (Admin, Alpha, Gamma) and create custom roles as needed. Grant only what’s necessary.
-- **SSO/MFA**: Prefer SSO (OIDC/SAML/LDAP) with MFA over local accounts.
-- **Strong secrets**: Set a strong `SUPERSET_SECRET_KEY` and rotate credentials regularly.
-
-```bash
-# .env (example)
-SUPERSET_SECRET_KEY=replace_with_long_random_string
-ADMIN_USERNAME=admin
-ADMIN_PASSWORD=changeMeNow!
-
-
-rows = data_resp.json()["result"][0]["data"]
-df_superset = pd.DataFrame(rows)
-print("\nSample data:\n", df_superset.head())
+data_resp.raise_for_status()
 ```
+
+
+## Security
+
+How we protect the data :
+
+🔹 Secure Access & Authentication
+
+We restrict access to Superset through user accounts and role-based permissions. Each user has credentials, and roles ensure that sensitive dashboards or datasets are only visible to authorized people. This prevents unauthorized access.
+________________________________________
+🔹 Data Connections with Least Privilege
+
+Superset connects to databases using read-only accounts. This means users can query and visualize data but cannot modify or delete it. Access to the underlying data sources is minimized to reduce risks.
+________________________________________
+🔹 Network & Encryption
+
+When deployed in production, Superset is placed behind a secure network (VPN or firewall) and served via HTTPS. This ensures that data in transit between the user’s browser and Superset is encrypted, protecting confidential information from interception
+
+9)	Useful Links
+
+1	Superset Docs: https://superset.apache.org/docs/
+
+2	API Overview: https://superset.apache.org/docs/api
+
+3	GitHub Repo: https://github.com/apache/superset
+<img width="1060" height="464" alt="image" src="https://github.com/user-attachments/assets/9e57cba4-2a8b-49d9-907b-67cf51140189" />
+
+
