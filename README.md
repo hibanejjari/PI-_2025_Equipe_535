@@ -74,11 +74,16 @@ Initialize (usually already done):
 3	Create a chart and add it to a dashboard.
 
 **5)	Superset API Basics**
+
 POST /api/v1/security/login → get access token
+
 GET /api/v1/security/csrf_token → get CSRF token
+
 GET /api/v1/dataset/{id}/data?format=json → fetch rows
+
 POST /api/v1/chart/data → execute chart queries
-Find your dataset id in the Explore URL (…?dataset=12…)
+
+Find your dataset id in the Explore URL (…?dataset=12…) (WE will have it once Vinci Energy gives it to us)
 
 
 **6)	Python Proof of Concept – Validate Dashboard Data**
@@ -127,7 +132,9 @@ ds,value 2025-01-01,100
 import pandas as pd
 
 def test_no_mismatches():
+
 df = pd.read_csv("superset_vs_reference_report.csv")
+
 assert not (df["status"] == "mismatch").any(), "Mismatches detected in dashboard data" Pipeline file:
 
 ### .gitlab-ci.yml image: python:3.11-slim
@@ -142,14 +149,19 @@ stage:
 **8)	Troubleshooting**
   
 1	ConnectionRefusedError to localhost:8088 — Superset not running. Start: docker compose -f docker-compose-non-dev.yml up -d
+
 2	Pipe not found / cannot pull images — Start Docker Desktop; enable WSL 2 backend; verify with docker run hello-world.
+
 3	Auth failed — Update USER/PWD to your Superset admin credentials.
-4	Port 8088 in use — Edit docker-compose-non-dev.yml and change host port (e.g., 8090:8088).
+
+4	Port 8088 in use — Edit docker-compose-non-dev.yml and change host port (like 8090:8088).
   
 **9)	Useful Links**
 
 1	Superset Docs: https://superset.apache.org/docs/
+
 2	API Overview: https://superset.apache.org/docs/api
+
 3	GitHub Repo: https://github.com/apache/superset
 
 # Once we have the right database : (what we need to modify)
@@ -168,7 +180,9 @@ We need to update the variables **( fill out the TODO LINES)** ALL TO DO ON THE 
 
 
 import requests
+
 import pandas as pd
+
 import json
 
 # CONFIG (TODO: update later)
