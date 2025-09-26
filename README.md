@@ -208,13 +208,6 @@ docker run hello-world
 
 ---
 
-### 9) Useful Links
-
-- [Superset Docs](https://superset.apache.org/docs/)  
-- [API Overview](https://superset.apache.org/docs/api)  
-- [GitHub Repo](https://github.com/apache/superset)  
-
----
 
 ## Once we have the right database (what to modify)
 
