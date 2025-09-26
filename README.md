@@ -182,17 +182,16 @@ import requests
 import pandas as pd
 import json
 
-# ==============================
 # CONFIG (TODO: update later)
-# ==============================
+
 BASE = "https://your-superset.company.com/superset"   # TODO: your Superset URL (include /superset if needed)
 USER = "your_user"                                     # TODO: your Superset username
 PWD  = "your_password"                                 # TODO: your Superset password
 DATASET_ID = 0                                         # TODO: put dataset id once dataset is created in Superset
 
-# ==============================
+
 # LOGIN
-# ==============================
+
 session = requests.Session()
 login = session.post(
     f"{BASE}/api/v1/security/login",
@@ -202,9 +201,9 @@ login = session.post(
 login.raise_for_status()
 print("Logged in")
 
-# ==============================
+
 # QUERY (edit once you know real columns)
-# ==============================
+
 payload = {
     "datasource": {"id": DATASET_ID, "type": "table"},
     "queries": [{
