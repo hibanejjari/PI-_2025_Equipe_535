@@ -2,7 +2,7 @@
 
 # Apache Superset – Project 110 Guide (Windows)
 
-# 1)	Prerequisites
+### 1)	Prerequisites
 
 1	Windows 10/11 with admin rights
 
@@ -20,9 +20,11 @@ In your main terminal after opening docker run :
 docker version docker run hello-world
 
 
-2)	Get and Run Superset with Docker
+**2)	Get and Run Superset with Docker**
+
 Open PowerShell and run:
-cd C:\Users\ git clone https://github.com/apache/superset.git cd C:\Users\\superset docker compose -f docker-compose-non-dev.yml pull docker compose -f docker-compose-non-dev.yml up -d
+
+**cd C:\Users\ git clone https://github.com/apache/superset.git cd C:\Users\\superset docker compose -f docker-compose-non-dev.yml pull docker compose -f docker-compose-non-dev.yml up -d**
 
 Check services:
 
