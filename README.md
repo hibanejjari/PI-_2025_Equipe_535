@@ -257,10 +257,9 @@ superset.apache.org/docs/
 
 ### 9)	Useful Links
 
-1	Superset Docs: https://
-2	API Overview: https://superset.apache.org/docs/api
+API Overview: https://superset.apache.org/docs/api
 
-3	GitHub Repo: https://github.com/apache/superset
+GitHub Repo: https://github.com/apache/superset
 
 
 ## Security
