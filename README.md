@@ -30,9 +30,9 @@ docker info
 
 **cd C:\Users\ git clone https://github.com/apache/superset.git**
 
-**cd C:\Users\\superset docker compose -f docker-compose-non-dev.yml 
-**
-pull docker compose -f docker-compose-non-dev.yml up -d**
+**cd C:\Users\\superset docker compose -f docker-compose-non-dev.yml**
+
+**pull docker compose -f docker-compose-non-dev.yml up -d**
 
 Check services:
 
