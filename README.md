@@ -465,3 +465,35 @@ Once a real database is available (instead of the simple `hello_world` model), t
 
 With this workflow, dbt acts as the **transformation layer**:  
 it takes raw data from your database, applies business logic, and creates clean, analytics-ready tables for dashboards and reports.
+
+## ASCII Diagram 
+
+```text
+        ┌─────────────┐
+        │   Raw Data  │   (sales, CRM, logs, sensors)
+        └──────┬──────┘
+               │
+               ▼
+        ┌─────────────┐
+        │   dbt       │   (SQL transformations, cleaning, joins)
+        └──────┬──────┘
+               │
+               ▼
+        ┌─────────────┐
+        │ PostgreSQL  │   (analytics schema with dbt models)
+        └──────┬──────┘
+               │
+               ▼
+        ┌─────────────┐
+        │ Superset    │   (dashboards, KPIs, anomaly visualization)
+        └─────────────┘
+```
+
+```mermaid
+flowchart TD
+    A[Raw Data<br>(Sales, CRM, Logs, Sensors)] --> B[dbt<br>(Transformations & Cleaning)]
+    B --> C[PostgreSQL<br>(Analytics Schema)]
+    C --> D[Apache Superset<br>(Dashboards & KPIs)]
+```
+
+
