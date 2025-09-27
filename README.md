@@ -217,13 +217,6 @@ Expected output:
 Python 3.11.x
 ```
 
-```bash
-where python
-```
-
-This shows the path where Python is installed.
-
----
 
 #### Verify Git installation
 
