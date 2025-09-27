@@ -53,7 +53,7 @@ The workflow is:
 - [Diagrams](#ascii-diagram)  
   Visual overview of the data pipeline and workflows.
 
-- [Useful Links](#9-useful-links)  
+- [Useful Links](#9-useful-links)
   References to Superset docs, dbt docs, and GitHub repos.
   
 - [Project Structure](#project-structure)  
@@ -469,11 +469,32 @@ data_resp.raise_for_status()
 ```
 superset.apache.org/docs/
 
-### 9)	Useful Links
+### 9 Useful Links
 
-API Overview: https://superset.apache.org/docs/api
+**Superset Documentation**
+- API Overview: https://superset.apache.org/docs/api  
+- Installation Guide: https://superset.apache.org/docs/installation/installing-superset-using-docker-compose  
+- Configuration Guide: https://superset.apache.org/docs/configuration/configuring-superset  
 
-GitHub Repo: https://github.com/apache/superset
+**dbt Documentation**
+- dbt Core (Intro & Guides): https://docs.getdbt.com/docs/introduction  
+- dbt Postgres Adapter: https://docs.getdbt.com/reference/warehouse-profiles/postgres-profile  
+- dbt CLI Reference: https://docs.getdbt.com/reference/dbt-commands  
+
+**PostgreSQL Documentation**
+- Official Docs: https://www.postgresql.org/docs/  
+- Windows Installer: https://www.enterprisedb.com/downloads/postgres-postgresql-downloads  
+
+**Docker**
+- Install Docker Desktop (Windows/Mac): https://docs.docker.com/desktop/  
+- Docker Compose Reference: https://docs.docker.com/compose/  
+
+**Git**
+- Git Installation: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
+
+**Python**
+- Python Downloads: https://www.python.org/downloads/  
+- venv Documentation: https://docs.python.org/3/library/venv.html  
 
 
 ## Security
