@@ -3,41 +3,12 @@
 This project sets up a complete analytics pipeline using **Apache Superset**, **PostgreSQL**, and **dbt**.  
 The workflow is:  
 ```text
-┌──────────────────────────────┐
-│          Raw Data            │  
-└───────────────┬──────────────┘
-                │
-                ▼
-┌──────────────────────────────┐
-│             dbt              │
-│ - Cleans & transforms data   │
-│ - Builds SQL models          │
-└───────────────┬──────────────┘
-                │
-                ▼
-┌──────────────────────────────┐
-│          PostgreSQL          │
-│ - Stores raw & transformed   │
-│   tables/views               │
-│ - Central source    │
-└───────────────┬──────────────┘
-                │
-                ▼
-┌──────────────────────────────┐
-│        Apache Superset       │
-│ - Dashboards & KPIs          │
-│ - Visualizations & charts    │
-└───────────────┬──────────────┘
-                │
-                ▼
-┌──────────────────────────────┐
-│           Python             │
-│ - Automation & validation    │
-│ - Anomaly detection (ML)     │
-│ - CI/CD checks               │
-└──────────────────────────────┘
+┌───────────────┐     ┌───────────────┐     ┌───────────────┐     ┌───────────────┐     ┌───────────────┐
+│   Raw Data    │ ──► │      dbt      │ ──► │  PostgreSQL   │ ──► │   Superset    │ ──► │    Python     │
+│ (CRM, Logs,   │     │ - Transforms  │     │ - Stores raw  │     │ - Dashboards  │     │ - Automation  │
+│  Sensors)     │     │ - SQL models  │     │   & clean     │     │ - Charts & KPIs│    │ - Anomaly ML │
+└───────────────┘     └───────────────┘     └───────────────┘     └───────────────┘     └───────────────┘
 ```
-
 
 
 ## Table of Contents
