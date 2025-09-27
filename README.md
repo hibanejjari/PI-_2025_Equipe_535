@@ -17,14 +17,19 @@ The workflow is:
 - [Setup & Prerequisites](#1-prerequisites)  
   Install required tools (Docker, Git, Python, WSL2) and verify they work.
 
+-> **Simpler, Summarized Route**
+
 - [Quickstart](#quickstart--superset--dbt--postgresql)  
   Run dbt → check PostgreSQL → load data in Superset → build a simple dashboard. 
+
+-> **More Detailed Guides**
 
 - [Superset Setup](#2-get-and-run-superset-with-docker)  
   Run Apache Superset with Docker, access the UI, and confirm the service is up.
 
 - [Setting up dbt with PostgreSQL](#setting-up-dbt-with-postgresql)  
   Create a dbt project, configure `profiles.yml`, and connect dbt to PostgreSQL.
+
 
 ---
 
