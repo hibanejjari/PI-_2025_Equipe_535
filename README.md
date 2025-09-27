@@ -841,9 +841,9 @@ it takes raw data from your database, applies business logic, and creates clean,
 - **macros/** → dbt macros (reusable SQL logic).  
 - **models/** → main dbt transformations (`example/` = auto-generated, `hello_world.sql` = test model).  
 - **scripts/** → Python scripts for automation, anomaly detection, or Superset validation.  
-- **seeds/** → CSVs you want dbt to load as database tables.  
+- **seeds/** → CSVs we want dbt to load as database tables.  
 - **snapshots/** → to track slowly changing dimensions.  
-- **tests/** → dbt or Python tests to validate your data models.  
+- **tests/** → dbt or Python tests to validate the data models.  
 
 
 This structure keeps **setup, transformations, scripts, and configuration** clearly separated for easier navigation.  
