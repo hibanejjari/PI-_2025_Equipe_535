@@ -285,8 +285,57 @@ Test with SuperSet :
 
 ## For the project, Superset is only the Frontend, we will also need
 
-PostgreSQL → store data & anomaly results.
+PostgreSQL → store data & anomaly results. ( Its SQL SHell)
 
-dbt → transformations + SQL modeling.
+dbt → transformations + SQL modeling. (a developer framework for SQL inside the database.)
 
 Python scripts (with scikit-learn / PyOD) → anomaly detection logic.
+
+# Setting up dbt with PostgreSQL
+
+This guide explains how to set up a clean Python environment and install dbt for PostgreSQL.
+
+## 1. Open Command Prompt or PowerShell
+Start from a clean shell.
+
+## 2. Navigate to your Documents folder
+```bash
+cd C:\Users\<YourName>\Documents
+```
+
+## 3. Create a new Python virtual environment for dbt
+```bash
+python -m venv dbt_env
+```
+This makes a folder called `dbt_env` where dbt and its dependencies will live, separate from other projects.
+
+## 4. Activate the environment
+```bash
+C:\Users\<YourName>\Documents\dbt_env\Scripts\activate
+```
+You should now see `(dbt_env)` at the start of your command line → means it’s active.
+
+## 5. Install dbt for PostgreSQL
+```bash
+pip install dbt-postgres
+```
+This installs dbt plus the PostgreSQL adapter.
+
+## 6. Verify installation
+```bash
+dbt --version
+```
+If successful, you’ll see dbt’s version and plugins listed.
+
+## 7. Initialize a dbt project
+```bash
+dbt init my_project
+```
+Follow the prompts to connect dbt to your PostgreSQL (host, port, database name, username, password).  
+This creates a `my_project/` folder with starter configuration.
+
+---
+
+At this point, dbt is ready to run SQL models inside your PostgreSQL database.
+
+
