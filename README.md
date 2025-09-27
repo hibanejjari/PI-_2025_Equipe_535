@@ -257,7 +257,7 @@ rows = data_resp.json()["result"][0]["data"]
 
 df_superset = pd.DataFrame(rows)
 
-print("\n Sample data:\n", df_superset.head```
+print("\n Sample data:\n", df_superset.head
 
 ```
 
