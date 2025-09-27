@@ -2,7 +2,12 @@
 
 This project sets up a complete analytics pipeline using **Apache Superset**, **PostgreSQL**, and **dbt**.  
 The workflow is:  
-**Raw Data → dbt (transformations) → PostgreSQL (analytics schema) → Superset (dashboards & KPIs).**
+```text
+ Raw Data (CRM, Logs, Sensors) ──► dbt (Transformations) ──► PostgreSQL (Analytics Schema) ──► Superset (Dashboards & KPIs)
+                                          │
+                                          ▼
+                             Python (Automation, Anomaly Detection, CI/CD)
+```
 
 PostgreSQL → Stores raw + transformed data
 
