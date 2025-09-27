@@ -14,12 +14,11 @@ The workflow is:
 
 ## Table of Contents
 
-
 ### Setup
 - [Setup & Prerequisites](#setup--prerequisites)
 - [Quickstart](#quickstart)
 - [Superset Setup](#superset-setup)
-- [dbt & PostgreSQL Setup](#dbt--postgresql-setup)
+- [Setting up dbt with PostgreSQL](#setting-up-dbt-with-postgresql)
 
 ### Code & Implementation
 - [Working with the Real Database](#working-with-the-real-database)
@@ -32,6 +31,7 @@ The workflow is:
 - [Security](#security)
 - [Diagrams](#diagrams)
 - [Useful Links](#useful-links)
+
 
 
 
