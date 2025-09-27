@@ -1,6 +1,7 @@
 # PI-_2025_Equipe_535
 
-# Summary of commands ; details below 
+# Summary of commands 
+; details below ( starting from Apache Superset – Project 110 Guide (Windows))
 #  Quickstart – Superset + dbt + PostgreSQL
 
 This project sets up a complete analytics pipeline:  
