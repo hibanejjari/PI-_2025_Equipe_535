@@ -18,12 +18,12 @@ The workflow is:
 - [Setup & Prerequisites](#1-prerequisites)  
   Install required tools (Docker, Git, Python, WSL2) and verify they work.
   
-(Summarized way to Set up)
+**(Summarized way to Set up)**
 
 - [Quickstart](#quickstart--superset--dbt--postgresql)  
   Run dbt → check PostgreSQL → load data in Superset → build a simple dashboard. 
 
-(Detailed guide for setup)
+**(Detailed guide for setup)**
 
 - [Superset Setup](#2-get-and-run-superset-with-docker)  
   Run Apache Superset with Docker, access the UI, and confirm the service is up.
