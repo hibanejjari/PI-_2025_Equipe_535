@@ -39,7 +39,7 @@ docker compose ps
 docker compose logs -f
 ```
 
-Open ```[http://localhost:8088](http://localhost:8088)```
+Open ```[http://localhost:8088]```
 
 Default credentials:  
 **Username:** `admin` / **Password:** `admin`
