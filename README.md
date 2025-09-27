@@ -145,7 +145,9 @@ merged.to_csv("superset_vs_reference_report.csv", index=False)
 print(merged["status"].value_counts())
 ```
 
-Reference CSV template (`reference_expected.csv`):
+Reference CSV template (`reference_expected.csv`): 
+
+( this is just an example of a dataset to test with)
 
 ```csv
 ds,value
