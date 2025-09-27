@@ -24,7 +24,7 @@ The workflow is:
 
 -> **More Detailed Guides**
 
-- [Superset Setup](#2-get-and-run-superset-with-docker)  
+- [Superset Setup](#apache-superset--project-110-guide-windows) 
   Run Apache Superset with Docker, access the UI, and confirm the service is up.
 
 - [Setting up dbt with PostgreSQL](#setting-up-dbt-with-postgresql)  
