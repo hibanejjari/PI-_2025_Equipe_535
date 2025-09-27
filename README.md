@@ -14,21 +14,25 @@ The workflow is:
 
 ## Table of Contents
 
+## Table of Contents
 
-- [Quickstart](#quickstart--superset-dbt-postgresql)
-- [Setup & Prerequisites](#1-prerequisites)
-- [Superset Setup](#2-get-and-run-superset-with-docker)
-- [Load Examples](#3-load-examples)
-- [Add the First Dataset](#4-add-the-first-dataset)
-- [Superset API Basics](#5-superset-api-basics)
-- [Python Proof of Concept](#6-python-proof-of-concept--validate-dashboard-data)
-- [CI/CD Skeleton](#7-cicd-skeleton-gitlab)
-- [Troubleshooting](#8-troubleshooting)
+### Setup
+- [Setup & Prerequisites](#setup--prerequisites)
+- [Quickstart](#quickstart)
+- [Superset Setup](#superset-setup)
+- [dbt & PostgreSQL Setup](#dbt--postgresql-setup)
+
+### Code & Implementation
 - [Working with the Real Database](#working-with-the-real-database)
-- [Files to Modify or Add](#files-to-modify-or-add-once-real-database-is-connected)
+- [Files to Modify or Add](#files-to-modify-or-add)
+- [Python Integration](#python-integration)
+- [CI/CD Pipeline](#cicd-pipeline)
+
+### Informational
+- [Troubleshooting](#troubleshooting)
 - [Security](#security)
-- [Diagrams](#ascii-diagram)
-- [Useful Links](#9-useful-links)
+- [Diagrams](#diagrams)
+- [Useful Links](#useful-links)
 
 
 
