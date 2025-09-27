@@ -25,13 +25,7 @@ docker run hello-world
 1. Make sure **Docker Desktop** is running.  
 2. Open PowerShell and run:
 
-```bash
-cd C:\Users\
-git clone https://github.com/apache/superset.git
-cd superset
-docker compose -f docker-compose-non-dev.yml pull
-docker compose -f docker-compose-non-dev.yml up -d
-
+``
 
 cd C:\Users\
 git clone https://github.com/apache/superset.git
