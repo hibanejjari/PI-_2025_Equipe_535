@@ -78,6 +78,8 @@ docker compose exec superset_app superset init
 
 ### 5) Superset API Basics
 
+To put in your terminal
+
 ```http
 POST /api/v1/security/login
 GET  /api/v1/security/csrf_token
