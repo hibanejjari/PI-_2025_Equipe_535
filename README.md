@@ -8,8 +8,6 @@ The workflow is:
                                           ▼
                              Python (Automation, Anomaly Detection, CI/CD)
 ```
-
-```` ```mermaid ````
 flowchart LR
     A[Raw Data (CRM, Sales, Logs, Sensors)]
     B[dbt - Transformations & SQL Models]
@@ -19,7 +17,6 @@ flowchart LR
 
     A --> B --> C --> D
     C --> E
-    ```` ``` ````
 
 
 
