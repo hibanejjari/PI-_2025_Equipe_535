@@ -6,7 +6,7 @@ The workflow is:
 ┌───────────────┐     ┌───────────────┐     ┌───────────────┐     ┌───────────────┐     ┌───────────────┐
 │   Raw Data    │ ──► │      dbt      │ ──► │  PostgreSQL   │ ──► │   Superset    │ ──► │    Python     │
 │               │     │ - Transforms  │     │ - Stores raw  │     │-Dashboards    │     │ - Automation  │
-│               │     │ - SQL models  │     │   & clean     │     │-Charts & KPIs │     │ - Anomaly ML │
+│               │     │ - SQL models  │     │   & clean     │     │-Charts & KPIs │     │ - Anomaly ML  │
 └───────────────┘     └───────────────┘     └───────────────┘     └───────────────┘     └───────────────┘
 ```
 
