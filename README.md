@@ -836,7 +836,7 @@ it takes raw data from your database, applies business logic, and creates clean,
 
  Folder Roles
 - **analyses/** → for dbt analysis files (SQL reports not meant as models).  
-- **data/** → holds reference/test CSVs, e.g., used to validate Superset results.  
+- **data/** → holds reference/test CSVs, like its used to validate Superset results.  
 - **dbt/** → configuration for the dbt project (`dbt_project.yml`).  
 - **macros/** → dbt macros (reusable SQL logic).  
 - **models/** → main dbt transformations (`example/` = auto-generated, `hello_world.sql` = test model).  
