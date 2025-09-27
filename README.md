@@ -629,7 +629,7 @@ flowchart TD
    - Validate dashboards against reference CSVs (`superset_check.py`).  
    - Automate checks in CI/CD with `pytest` + GitLab pipelines.
   
-   graph LR
+graph LR
     subgraph RawData[Raw Data]
         A[CRM / Logs / Sensors] --> |Load CSV / ETL| A1[PostgreSQL Raw Tables]
     end
@@ -638,17 +638,22 @@ flowchart TD
         A1 --> B[dbt Models]
         B --> B1[models/*.sql]
         B --> B2[models/src.yml]
-        B --> B3[profiles.yml]
+    end
+
+    subgraph Config[dbt Config]
+        B3[profiles.yml] --> C
     end
 
     subgraph Storage[PostgreSQL Analytics Schema]
         B --> C[Analytics Tables/Views]
+        B3 --> C
     end
 
     subgraph Superset[Visualization]
         C --> D[Superset Dashboards]
         D --> D1[Datasets Config (Superset UI)]
         D --> D2[Charts & KPIs]
+        D2 --> U[End Users / Business Team]
     end
 
     subgraph Python[Automation / Anomaly Detection]
@@ -656,11 +661,7 @@ flowchart TD
         E --> E1[superset_check.py]
         E --> E2[superset_fetch.py]
         E --> E3[scikit-learn / PyOD Models]
+        E --> P[CI/CD - GitLab Pipelines]
     end
 
-    E --> |Feedback| A1
-
-
-
-
-
+    P --> D
