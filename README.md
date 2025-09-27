@@ -29,7 +29,8 @@ docker run hello-world
 git clone https://github.com/apache/superset.git
 cd C:\Users\superset
 docker compose -f docker-compose-non-dev.yml pull
-docker compose -f docker-compose-non-dev.yml up -d ```
+docker compose -f docker-compose-non-dev.yml up -d
+```
 
 Check services:
 
@@ -38,7 +39,7 @@ docker compose ps
 docker compose logs -f
 ```
 
-Open [http://localhost:8088](http://localhost:8088)
+Open ```[http://localhost:8088](http://localhost:8088)```
 
 Default credentials:  
 **Username:** `admin` / **Password:** `admin`
