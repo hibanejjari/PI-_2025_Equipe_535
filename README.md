@@ -14,19 +14,18 @@ The workflow is:
 
 ## Table of Contents
 
-
 ### Setup
-- [Setup & Prerequisites](#setup--prerequisites)  
+- [Setup & Prerequisites](#1-prerequisites)  
   Install required tools (Docker, Git, Python, WSL2) and verify they work.
-- [Quickstart](#quickstart)  
-  run dbt → check PostgreSQL → load data in Superset → build a simple dashboard.
 
-- [Superset Setup](#superset-setup)  
+- [Quickstart](#quickstart--superset--dbt--postgresql)  
+  Run dbt → check PostgreSQL → load data in Superset → build a simple dashboard.
+
+- [Superset Setup](#2-get-and-run-superset-with-docker)  
   Run Apache Superset with Docker, access the UI, and confirm the service is up.
 
 - [Setting up dbt with PostgreSQL](#setting-up-dbt-with-postgresql)  
   Create a dbt project, configure `profiles.yml`, and connect dbt to PostgreSQL.
-
 
 ---
 
@@ -34,31 +33,29 @@ The workflow is:
 - [Working with the Real Database](#working-with-the-real-database)  
   Connect real raw tables, define sources, and write dbt transformation models.
 
-- [Files to Modify or Add](#files-to-modify-or-add)  
+- [Files to Modify or Add](#files-to-modify-or-add-once-real-database-is-connected)  
   List of key files to update (`models/src.yml`, `profiles.yml`, `superset_check.py`, `.gitlab-ci.yml`).
 
 - [Python Integration](#python-integration)  
   Use Python scripts for anomaly detection, Superset API validation, and automation.
 
-- [CI/CD Pipeline](#cicd-pipeline)  
+- [CI/CD Pipeline](#7-cicd-skeleton-gitlab)  
   Add automated checks using `pytest` and GitLab CI/CD.
 
 ---
 
 ### Informational
-- [Troubleshooting](#troubleshooting)  
+- [Troubleshooting](#8-troubleshooting)  
   Common errors (Docker not running, Superset auth failed) and fixes.
 
-- [Security](#security)
+- [Security](#security)  
   Our practices for access control, database permissions, and encryption.
 
 - [Diagrams](#diagrams)  
   Visual overview of the data pipeline and workflows.
 
-- [Useful Links](#useful-links)  
+- [Useful Links](#9-useful-links)  
   References to Superset docs, dbt docs, and GitHub repos.
-
-
 
 
 
