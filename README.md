@@ -5,10 +5,11 @@ The workflow is:
 ```text
 ┌───────────────┐     ┌───────────────┐     ┌───────────────┐     ┌───────────────┐     ┌───────────────┐
 │   Raw Data    │ ──► │      dbt      │ ──► │  PostgreSQL   │ ──► │   Superset    │ ──► │    Python     │
-│ (CRM, Logs,   │     │ - Transforms  │     │ - Stores raw  │     │ - Dashboards  │     │ - Automation  │
-│  Sensors)     │     │ - SQL models  │     │   & clean     │     │ - Charts & KPIs│    │ - Anomaly ML │
+                │     │ - Transforms  │     │ - Stores raw  │     │ - Dashboards  │     │ - Automation  │
+                │     │ - SQL models  │     │   & clean     │     │ - Charts & KPIs│    │ - Anomaly ML │
 └───────────────┘     └───────────────┘     └───────────────┘     └───────────────┘     └───────────────┘
 ```
+
 
 
 ## Table of Contents
