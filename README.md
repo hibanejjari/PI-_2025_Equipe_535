@@ -463,5 +463,5 @@ Once a real database is available (instead of the simple `hello_world` model), t
 
 ---
 
-✅ With this workflow, dbt acts as the **transformation layer**:  
+With this workflow, dbt acts as the **transformation layer**:  
 it takes raw data from your database, applies business logic, and creates clean, analytics-ready tables for dashboards and reports.
