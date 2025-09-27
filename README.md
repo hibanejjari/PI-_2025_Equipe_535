@@ -813,27 +813,11 @@ it takes raw data from your database, applies business logic, and creates clean,
 ## Project Structure
 
 The repository is organized into clear folders to separate dbt, Python scripts, datasets, tests, and configuration:
-
-project_root/
-│
-├── dbt/ # dbt project files
-│ ├── models/ # SQL transformation models
-│ ├── seeds/ # seed data
-│ ├── snapshots/ # snapshots
-│ ├── analyses/ # analysis queries
-│ ├── macros/ # custom macros
-│ └── dbt_project.yml # dbt config
-│
-├── scripts/ # Python scripts (API, validation, anomaly detection)
-│
-├── data/ # reference CSVs, raw datasets
-│
-├── tests/ # pytest and validation tests
-│
-├── config/ # profiles.yml, CI/CD pipeline configs
-│
-├── README.md
-└── .gitignore
+- **dbt/** → project config  
+- **scripts/** → Python automation & checks  
+- **data/** → static reference files  
+- **models/** → dbt SQL transformations  
+- **tests/** → validation & CI/CD tests  
 
 
 This structure keeps **setup, transformations, scripts, and configuration** clearly separated for easier navigation.  
