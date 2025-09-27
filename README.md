@@ -816,6 +816,7 @@ it takes raw data from your database, applies business logic, and creates clean,
 ├── analyses/ # Placeholder for dbt analyses (future reports or queries)
 
 ├── data/ # Raw/reference datasets
+
 │ └── reference_expected.csv
 
 ├── dbt/ # dbt project configuration
