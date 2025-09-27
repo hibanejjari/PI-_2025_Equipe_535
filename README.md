@@ -8,15 +8,7 @@ The workflow is:
                                           ▼
                              Python (Automation, Anomaly Detection, CI/CD)
 ```
-flowchart LR
-    A[Raw Data (CRM, Sales, Logs, Sensors)]
-    B[dbt - Transformations & SQL Models]
-    C[PostgreSQL - Raw + Transformed Data]
-    D[Superset - Dashboards & KPIs]
-    E[Python - Automation, ML, Anomaly Detection, CI/CD]
 
-    A --> B --> C --> D
-    C --> E
 
 
 
