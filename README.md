@@ -819,18 +819,25 @@ it takes raw data from your database, applies business logic, and creates clean,
 │ └── reference_expected.csv
 
 ├── dbt/ # dbt project configuration
+
 │ └── dbt_project.yml
 
 ├── macros/ # Custom dbt macros (currently empty)
 
 ├── models/ # dbt models (SQL transformations)
+
 │ ├── example/ # Example dbt models auto-generated
+
 │ │ ├── my_first_dbt_model.sql
+
 │ │ ├── my_second_dbt_model.sql
+
 │ │ └── schema.yml
+
 │ └── hello_world.sql # Custom model for initial dbt test
 
 ├── scripts/ # Python automation and validation scripts
+
 │ └── superset_check.py
 
 ├── seeds/ # Static CSV seeds for dbt (empty placeholder)
