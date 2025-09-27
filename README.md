@@ -60,8 +60,10 @@ The workflow is:
 
 
 
+
+
 # Summary of commands 
-; details below ( starting from Apache Superset – Project 110 Guide (Windows))
+; details below if needed ( starting from the section **Apache Superset – Project 110 Guide (Windows**))
 #  Quickstart – Superset + dbt + PostgreSQL
 
 
