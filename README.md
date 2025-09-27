@@ -31,7 +31,8 @@ git clone https://github.com/apache/superset.git
 cd superset
 docker compose -f docker-compose-non-dev.yml pull
 docker compose -f docker-compose-non-dev.yml up -d
-bash
+
+
 cd C:\Users\
 git clone https://github.com/apache/superset.git
 cd C:\Users\superset
