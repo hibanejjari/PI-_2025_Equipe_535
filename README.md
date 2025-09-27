@@ -156,20 +156,79 @@ SELECT * FROM hello_world;
 
 ### 1) Prerequisites
 
-- Windows 10/11 with admin rights
-- Docker Desktop installed and running (WSL 2 backend enabled)
-- Git installed
-- Python 3.11 installed (ok if 3.13 is also present)
-- Chrome or Edge
+- Windows 10/11 with admin rights  
+- Docker Desktop installed and running (WSL2 backend enabled)  
+- WSL2 (Windows Subsystem for Linux 2) installed and set as default  
+- Git installed  
+- Python 3.11 installed (Python 3.13 is also supported)  
+- Chrome or Edge browser  
 
-Verify Docker:
+---
 
-```
+#### Verify Docker installation
+
+```bash
 docker version
+```
+
+```bash
 docker run hello-world
 ```
 
+Expected output includes Docker client and server versions, and a confirmation message from `hello-world`.
+
 ---
+
+#### Verify WSL installation
+
+```bash
+wsl --version
+```
+
+```bash
+wsl -l -v
+```
+
+```bash
+wsl --set-default-version 2
+```
+
+Expected output should show your installed WSL version (2 recommended) and list Linux distributions.
+
+---
+
+#### Verify Python installation
+
+```bash
+python --version
+```
+
+Expected output:
+
+```text
+Python 3.11.x
+```
+
+```bash
+where python
+```
+
+This shows the path where Python is installed.
+
+---
+
+#### Verify Git installation
+
+```bash
+git --version
+```
+
+Expected output:
+
+```text
+git version 2.x.x
+```
+
 
 
 ### 2) Get and Run Superset with Docker
