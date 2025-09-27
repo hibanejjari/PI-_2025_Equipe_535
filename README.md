@@ -591,7 +591,7 @@ it takes raw data from your database, applies business logic, and creates clean,
 
 ```text
         ┌─────────────┐
-        │   Raw Data  │   (sales, CRM, logs, sensors)
+        │   Raw Data  │   (sales, CRM, logs, sensors for example)
         └──────┬──────┘
                │
                ▼
