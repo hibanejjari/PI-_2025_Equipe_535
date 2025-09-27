@@ -1,5 +1,97 @@
 # PI-_2025_Equipe_535
 
+#Summary of commands ; details below 
+#  Quickstart – Superset + dbt + PostgreSQL
+
+This project sets up a complete analytics pipeline:  
+**Raw Data → dbt (transformations) → PostgreSQL (analytics schema) → Superset (dashboards).**
+
+---
+
+##  In 5 Minutes
+
+1. **Start Superset (Docker)**
+```bash
+git clone https://github.com/apache/superset.git
+cd C:\Users\superset
+docker compose -f docker-compose-non-dev.yml up -d
+```
+Open: [http://localhost:8088](http://localhost:8088)  
+Login: `admin / admin`
+
+📷 *Screenshot placeholder*  
+![Superset Login](images/superset_login.png)
+
+---
+
+2. **Set up dbt**
+```bash
+cd C:\Users\<YourName>\Documents
+python -m venv dbt_env
+C:\Users\<YourName>\Documents\dbt_env\Scripts\activate
+pip install dbt-postgres
+dbt init my_project
+```
+
+📷 *Screenshot placeholder*  
+![dbt Init](images/dbt_init.png)
+
+---
+
+3. **Configure PostgreSQL connection**
+Create `C:\Users\<YourName>\.dbt\profiles.yml`:
+```yaml
+my_project:
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: postgres
+      password: your_password_here
+      port: 5432
+      dbname: postgres
+      schema: public
+  target: dev
+```
+
+---
+
+4. **Test connection**
+```bash
+cd C:\Users\<YourName>\Documents\my_project
+dbt debug
+```
+
+📷 
+![dbt Debug](images/dbt_debug.png)
+
+---
+
+5. **Run first model**
+Create `models/hello_world.sql`:
+```sql
+SELECT 1 AS id, 'hello_dbt' AS message
+```
+Then run:
+```bash
+dbt run
+```
+Verify in PostgreSQL:
+```sql
+SELECT * FROM hello_world;
+```
+
+📷 *Screenshot placeholder*  
+![Hello World Model](images/dbt_hello_world.png)
+
+---
+
+ If you see `1 | hello_dbt`, everything is working
+
+---
+
+ After this, load **real raw data** into PostgreSQL, build transformations in **dbt**, and visualize them in **Superset dashboards**.
+
 # Apache Superset – Project 110 Guide (Windows)
 
 ### 1) Prerequisites
