@@ -35,8 +35,6 @@ Python → Automation, ML, anomaly detection, API integrations, testing
 ; details below ( starting from Apache Superset – Project 110 Guide (Windows))
 #  Quickstart – Superset + dbt + PostgreSQL
 
-This project sets up a complete analytics pipeline:  
-**Raw Data → dbt (transformations) → PostgreSQL (analytics schema) → Superset (dashboards).**
 
 ---
 
