@@ -52,9 +52,10 @@ The workflow is:
 
 - [Diagrams](#ascii-diagram)  
   Visual overview of the data pipeline and workflows.
+  
+- [Useful Links](#9-useful-links)  
+  References to Superset docs, dbt docs, GitHub repos, and installation guides / links for all required tools.
 
-- [Useful Links](#9-useful-links)
-  References to Superset docs, dbt docs, and GitHub repos.
   
 - [Project Structure](#project-structure)  
   Overview of how files and folders are organized in the repo.
