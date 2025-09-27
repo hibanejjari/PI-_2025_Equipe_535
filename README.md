@@ -4,25 +4,22 @@ This project sets up a complete analytics pipeline using **Apache Superset**, **
 The workflow is:  
 **Raw Data → dbt (transformations) → PostgreSQL (analytics schema) → Superset (dashboards & KPIs).**
 
----
-
 ## Table of Contents
 
 - [Quickstart – Superset + dbt + PostgreSQL](#quickstart--superset--dbt--postgresql)
-- [Prerequisites](#prerequisites)
-- [Get and Run Superset with Docker](#get-and-run-superset-with-docker)
-- [Load Examples](#load-examples)
-- [Add the First Dataset](#add-the-first-dataset)
-- [Superset API Basics](#superset-api-basics)
-- [Python Proof of Concept – Validate Dashboard Data](#python-proof-of-concept--validate-dashboard-data)
-- [CI/CD Skeleton (GitLab)](#cicd-skeleton-gitlab)
-- [Troubleshooting](#troubleshooting)
-- [Working with the Real Database](#working-with-the-real-database)
+- [1) Prerequisites](#1-prerequisites)
+- [2) Get and Run Superset with Docker](#2-get-and-run-superset-with-docker)
+- [3) Load Examples](#3-load-examples)
+- [4) Add The First Dataset](#4-add-the-first-dataset)
+- [5) Superset API Basics](#5-superset-api-basics)
+- [6) Python Proof of Concept – Validate Dashboard Data](#6-python-proof-of-concept--validate-dashboard-data)
+- [7) CI/CD Skeleton (GitLab)](#7-cicd-skeleton-gitlab)
+- [8) Troubleshooting](#8-troubleshooting)
+- [9) Useful Links](#9-useful-links)
 - [Security](#security)
-- [Diagrams](#diagrams)
-- [Useful Links](#useful-links)
-
----
+- [Setting up dbt with PostgreSQL](#setting-up-dbt-with-postgresql)
+- [Working with the real database](#working-with-the-real-database)
+- [ASCII Diagram](#ascii-diagram)
 
 
 
