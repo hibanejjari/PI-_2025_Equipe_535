@@ -77,7 +77,7 @@ The workflow is:
 
 ---
 
-##  In 5 Minutes
+##  Fast route
 
 1. **Start Superset (Docker)**
 ```bash
