@@ -1,4 +1,21 @@
 # PI-_2025_Equipe_535
+## Table of Contents
+
+- [Quickstart – Superset + dbt + PostgreSQL](#quickstart--superset--dbt--postgresql)
+- [Prerequisites](#prerequisites)
+- [Get and Run Superset with Docker](#get-and-run-superset-with-docker)
+- [Load Examples](#load-examples)
+- [Add the First Dataset](#add-the-first-dataset)
+- [Superset API Basics](#superset-api-basics)
+- [Python Proof of Concept – Validate Dashboard Data](#python-proof-of-concept--validate-dashboard-data)
+- [CI/CD Skeleton (GitLab)](#cicd-skeleton-gitlab)
+- [Troubleshooting](#troubleshooting)
+- [Working with the Real Database](#working-with-the-real-database)
+- [Security](#security)
+- [ASCII Diagram](#ascii-diagram)
+- [Useful Links](#useful-links)
+
+
 
 # Summary of commands 
 ; details below ( starting from Apache Superset – Project 110 Guide (Windows))
