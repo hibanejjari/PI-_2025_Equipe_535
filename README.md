@@ -4,6 +4,14 @@ This project sets up a complete analytics pipeline using **Apache Superset**, **
 The workflow is:  
 **Raw Data → dbt (transformations) → PostgreSQL (analytics schema) → Superset (dashboards & KPIs).**
 
+PostgreSQL → Stores raw + transformed data
+
+dbt → Cleans & transforms using SQL
+
+Superset → Dashboards & KPIs
+
+Python → Automation, ML, anomaly detection, API integrations, testing
+
 ## Table of Contents
 
 - [Quickstart – Superset + dbt + PostgreSQL](#quickstart--superset--dbt--postgresql)
