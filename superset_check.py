@@ -50,13 +50,13 @@ if data_resp.status_code != 200:
 
 rows = data_resp.json()
 df_superset = pd.DataFrame(rows)
-print("\n✅ Superset sample:\n", df_superset.head())
+print("\n Superset sample:\n", df_superset.head())
 
 # ------------------------------------------
 # 4) Load reference data
 # ------------------------------------------
 df_ref = pd.read_csv(REFERENCE_CSV)
-print("\n✅ Reference sample:\n", df_ref.head())
+print("\n Reference sample:\n", df_ref.head())
 
 # ------------------------------------------
 # 5) Compare values
@@ -94,5 +94,6 @@ merged["status"] = merged.apply(
 # ------------------------------------------
 report_path = "superset_vs_reference_report.csv"
 merged.to_csv(report_path, index=False)
-print(f"\n📄 Report written to {report_path}")
-print("\n📊 Summary:\n", merged["status"].value_counts())
+print(f"\nReport written to {report_path}")
+print("\n Summary:\n", merged["status"].value_counts())
+
