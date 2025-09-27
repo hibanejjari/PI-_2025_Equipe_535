@@ -1,5 +1,4 @@
 # PI-_2025_Equipe_535
-)
 
 This project sets up a complete analytics pipeline using **Apache Superset**, **PostgreSQL**, and **dbt**.  
 The workflow is:  
