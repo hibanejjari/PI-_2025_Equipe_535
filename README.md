@@ -77,6 +77,9 @@ The workflow is:
 
 - [Useful Links](#9-useful-links)  
   References to Superset docs, dbt docs, and GitHub repos.
+- [Project Structure](#project-structure)  
+  Overview of how files and folders are organized in the repo.
+
 
 
 
@@ -805,4 +808,43 @@ it takes raw data from your database, applies business logic, and creates clean,
                                 │
                                 ▼
                         End Users / Business Team
+
+
+## Project Structure
+
+The repository is organized into clear folders to separate dbt, Python scripts, datasets, tests, and configuration:
+
+project_root/
+│
+├── dbt/ # dbt project files
+│ ├── models/ # SQL transformation models
+│ ├── seeds/ # seed data
+│ ├── snapshots/ # snapshots
+│ ├── analyses/ # analysis queries
+│ ├── macros/ # custom macros
+│ └── dbt_project.yml # dbt config
+│
+├── scripts/ # Python scripts (API, validation, anomaly detection)
+│
+├── data/ # reference CSVs, raw datasets
+│
+├── tests/ # pytest and validation tests
+│
+├── config/ # profiles.yml, CI/CD pipeline configs
+│
+├── README.md
+└── .gitignore
+
+
+This structure keeps **setup, transformations, scripts, and configuration** clearly separated for easier navigation.  
+
+
+
+
+
+
+
+
+
+  
 >>>>>>> a7d31d284143c9dee2fc9434f47adaf8f362d0a8
