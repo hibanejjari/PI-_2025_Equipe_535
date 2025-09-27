@@ -283,4 +283,10 @@ Test with SuperSet :
 
 <img width="1060" height="464" alt="image" src="https://github.com/user-attachments/assets/9e57cba4-2a8b-49d9-907b-67cf51140189" />
 
+## For the project, Superset is only the Frontend, we will also need
 
+PostgreSQL → store data & anomaly results.
+
+dbt → transformations + SQL modeling.
+
+Python scripts (with scikit-learn / PyOD) → anomaly detection logic.
