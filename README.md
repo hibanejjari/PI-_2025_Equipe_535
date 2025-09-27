@@ -293,49 +293,175 @@ Python scripts (with scikit-learn / PyOD) → anomaly detection logic.
 
 # Setting up dbt with PostgreSQL
 
-This guide explains how to set up a clean Python environment and install dbt for PostgreSQL.
-
-## 1. Open Command Prompt or PowerShell
-Start from a clean shell.
-
-## 2. Navigate to your Documents folder
-```bash
-cd C:\Users\<YourName>\Documents
-```
-
-## 3. Create a new Python virtual environment for dbt
-```bash
-python -m venv dbt_env
-```
-This makes a folder called `dbt_env` where dbt and its dependencies will live, separate from other projects.
-
-## 4. Activate the environment
-```bash
-C:\Users\<YourName>\Documents\dbt_env\Scripts\activate
-```
-You should now see `(dbt_env)` at the start of your command line → means it’s active.
-
-## 5. Install dbt for PostgreSQL
-```bash
-pip install dbt-postgres
-```
-This installs dbt plus the PostgreSQL adapter.
-
-## 6. Verify installation
-```bash
-dbt --version
-```
-If successful, you’ll see dbt’s version and plugins listed.
-
-## 7. Initialize a dbt project
-```bash
-dbt init my_project
-```
-Follow the prompts to connect dbt to your PostgreSQL (host, port, database name, username, password).  
-This creates a `my_project/` folder with starter configuration.
+-> setting up dbt with PostgreSQL, creating a project, and running first models.
 
 ---
 
-At this point, dbt is ready to run SQL models inside your PostgreSQL database.
+## 1. Create a Python virtual environment
+```bash
+cd C:\Users\<YourName>\Documents
+python -m venv dbt_env
+```
 
+---
 
+## 2. Activate the environment
+```bash
+C:\Users\<YourName>\Documents\dbt_env\Scripts\activate
+```
+You should now see `(dbt_env)` at the start of your command line.
+
+---
+
+## 3. Install dbt for PostgreSQL
+```bash
+pip install dbt-postgres
+dbt --version
+```
+If successful, you’ll see the installed dbt core and postgres adapter.
+
+---
+
+## 4. Initialize a new dbt project
+```bash
+dbt init my_project
+```
+This creates a folder `my_project/` with the starter configuration.
+
+---
+
+## 5. Configure the database connection
+dbt needs a profile to connect to PostgreSQL.
+
+1. Go to your home directory:
+   ```bash
+   C:\Users\<YourName>\.dbt\
+   ```
+2. Create a file called `profiles.yml` with this content:
+
+   ```yaml
+   my_project:
+     outputs:
+       dev:
+         type: postgres
+         host: localhost
+         user: postgres
+         password: your_password_here
+         port: 5432
+         dbname: postgres
+         schema: public
+     target: dev
+   ```
+
+⚠️ Replace `your_password_here` with your actual PostgreSQL password.
+
+---
+
+## 6. Test the connection
+From inside your project folder:
+```bash
+cd C:\Users\<YourName>\Documents\my_project
+dbt debug
+```
+If everything is correct, you should see **“All checks passed!”**
+
+---
+
+## 7. Create your first model
+Inside `my_project/models/`, create a file called `hello_world.sql`:
+
+```sql
+SELECT 1 AS id, 'hello_dbt' AS message
+```
+
+---
+
+## 8. Run the model
+```bash
+dbt run
+```
+dbt will build your model as a table/view inside PostgreSQL.  
+You should see logs like:
+
+```
+1 of 1 OK created sql view model public.hello_world ... [CREATE VIEW in 0.18s]
+Completed successfully
+```
+
+---
+
+## 9. Verify in PostgreSQL
+Open the `psql` shell and run:
+```sql
+SELECT * FROM hello_world;
+```
+
+Output:
+```
+ id |  message
+----+-----------
+  1 | hello_dbt
+```
+
+---
+
+##  Working with the real database
+
+Once a real database is available (instead of the simple `hello_world` model), the workflow is:
+
+1. **Raw data**
+   - Raw data = the original, unprocessed tables loaded into the database from source systems (sales, CRM, sensors, logs, etc.).
+   - These tables often contain messy formats, inconsistent naming, duplicates, or missing values.
+   - Example (raw table `orders_raw`):
+     ```
+     id | cust_id | amt | date_str
+     1  |  101    |  50 | 2023-01-01
+     2  |  101    |  30 | 01/02/2023
+     3  |  102    | NULL| 2023-01-05
+     ```
+
+2. **Define sources**
+   - In `models/`, create a `src.yml` file:
+     ```yaml
+     version: 2
+     sources:
+       - name: raw
+         tables:
+           - name: orders_raw
+           - name: customers_raw
+     ```
+
+3. **Build transformation models**
+   - Write SQL in `models/` to clean, join, or aggregate data.
+   - Example `models/orders_clean.sql`:
+     ```sql
+     SELECT
+         id,
+         cust_id AS customer_id,
+         COALESCE(amt, 0) AS amount,
+         CAST(date_str AS DATE) AS order_date
+     FROM {{ source('raw', 'orders_raw') }}
+     ```
+
+   - Clean result:
+     ```
+     id | customer_id | amount | order_date
+     1  | 101         |   50   | 2023-01-01
+     2  | 101         |   30   | 2023-01-02
+     3  | 102         |    0   | 2023-01-05
+     ```
+
+4. **Run dbt**
+   ```bash
+   dbt run
+   ```
+   - dbt creates new tables/views (like `orders_clean`) inside your target schema.
+
+5. **Use the results**
+   - These dbt models can now be queried directly in PostgreSQL.
+   - You can connect BI tools like **Superset** or **Power BI** to visualize the dbt-built tables.
+
+---
+
+✅ With this workflow, dbt acts as the **transformation layer**:  
+it takes raw data from your database, applies business logic, and creates clean, analytics-ready tables for dashboards and reports.
