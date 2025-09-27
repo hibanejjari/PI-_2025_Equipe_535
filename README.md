@@ -11,19 +11,14 @@ The workflow is:
 
 
 
-
 ## Table of Contents
 
 ### Setup
 - [Setup & Prerequisites](#1-prerequisites)  
   Install required tools (Docker, Git, Python, WSL2) and verify they work.
-  
-**(Summarized way to Set up)**
 
 - [Quickstart](#quickstart--superset--dbt--postgresql)  
   Run dbt → check PostgreSQL → load data in Superset → build a simple dashboard. 
-
-**(Detailed guide for setup)**
 
 - [Superset Setup](#2-get-and-run-superset-with-docker)  
   Run Apache Superset with Docker, access the UI, and confirm the service is up.
@@ -40,7 +35,7 @@ The workflow is:
 - [Files to Modify or Add](#files-to-modify-or-add-once-real-database-is-connected)  
   List of key files to update (`models/src.yml`, `profiles.yml`, `superset_check.py`, `.gitlab-ci.yml`).
 
-- [Python Integration](#python-integration)  
+- [Python Integration](#6-python-proof-of-concept--validate-dashboard-data)  
   Use Python scripts for anomaly detection, Superset API validation, and automation.
 
 - [CI/CD Pipeline](#7-cicd-skeleton-gitlab)  
@@ -55,7 +50,7 @@ The workflow is:
 - [Security](#security)  
   Our practices for access control, database permissions, and encryption.
 
-- [Diagrams](#diagrams)  
+- [Diagrams](#ascii-diagram)  
   Visual overview of the data pipeline and workflows.
 
 - [Useful Links](#9-useful-links)  
@@ -63,7 +58,6 @@ The workflow is:
   
 - [Project Structure](#project-structure)  
   Overview of how files and folders are organized in the repo.
-
 
 
 
