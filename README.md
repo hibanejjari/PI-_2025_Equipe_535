@@ -19,15 +19,19 @@ docker run hello-world
 
 ---
 
+
 ### 2) Get and Run Superset with Docker
 
-Open PowerShell and run:
+1. Make sure **Docker Desktop** is running.  
+2. Open PowerShell and run:
 
 ```bash
-docker info
-```
-
-```bash
+cd C:\Users\
+git clone https://github.com/apache/superset.git
+cd superset
+docker compose -f docker-compose-non-dev.yml pull
+docker compose -f docker-compose-non-dev.yml up -d
+bash
 cd C:\Users\
 git clone https://github.com/apache/superset.git
 cd C:\Users\superset
