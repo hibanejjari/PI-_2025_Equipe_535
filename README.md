@@ -616,52 +616,58 @@ flowchart TD
     B --> C[PostgreSQL_Analytics]
     C --> D[Apache_Superset_Dashboards]
 ```
-### Summary of what we need to do when Real Database Is Connected
+### Files to Modify or Add Once Real Database Is Connected
 
-1. **Add raw tables as sources** in `models/src.yml`.  
-2. **Write dbt models** in `models/` to clean, join, and transform data.  
-3. **Run transformations** with `dbt run` (creates analytics tables in PostgreSQL).  
-4. **Verify tables** in PostgreSQL with `psql` or any SQL client.  
-5. **Expose datasets in Superset** and build dashboards.  
-6. **Python integration**:
-   - Fetch Superset/DB results via API.  
-   - Run anomaly detection (e.g., with scikit-learn or PyOD).  
-   - Validate dashboards against reference CSVs (`superset_check.py`).  
-   - Automate checks in CI/CD with `pytest` + GitLab pipelines.
+- `models/src.yml` → define raw tables from the database  
+- `models/*.sql` → create transformation models (cleaning, joining, standardizing)  
+- `profiles.yml` → configure PostgreSQL connection details  
+- `superset_check.py` → validate Superset data vs reference CSV  
+- `superset_fetch.py` → fetch results from Superset API  
+- `test_validation.py` → add automated data validation tests  
+- `.gitlab-ci.yml` → configure CI/CD pipeline for dbt + Python checks  
+
   
-graph LR
-    subgraph RawData[Raw Data]
-        A[CRM / Logs / Sensors] --> |Load CSV / ETL| A1[PostgreSQL Raw Tables]
-    end
-
-    subgraph dbt[dbt Transformations]
-        A1 --> B[dbt Models]
-        B --> B1[models/*.sql]
-        B --> B2[models/src.yml]
-    end
-
-    subgraph Config[dbt Config]
-        B3[profiles.yml] --> C
-    end
-
-    subgraph Storage[PostgreSQL Analytics Schema]
-        B --> C[Analytics Tables/Views]
-        B3 --> C
-    end
-
-    subgraph Superset[Visualization]
-        C --> D[Superset Dashboards]
-        D --> D1[Datasets Config (Superset UI)]
-        D --> D2[Charts & KPIs]
-        D2 --> U[End Users / Business Team]
-    end
-
-    subgraph Python[Automation / Anomaly Detection]
-        C --> E[Python Scripts]
-        E --> E1[superset_check.py]
-        E --> E2[superset_fetch.py]
-        E --> E3[scikit-learn / PyOD Models]
-        E --> P[CI/CD - GitLab Pipelines]
-    end
-
-    P --> D
+                  ┌─────────────────────────┐
+                  │   Raw Data (CRM, Logs,  │
+                  │   Sensors, Sales) │
+                  └─────────────┬───────────┘
+                                │  (CSV/ETL)
+                                ▼
+                  ┌─────────────────────────┐
+                  │ PostgreSQL Raw Tables   │
+                  └─────────────┬───────────┘
+                                │
+                                ▼
+                  ┌─────────────────────────┐
+                  │ dbt (Transformations)   │
+                  │  - models/*.sql         │
+                  │  - src.yml              │
+                  │  - profiles.yml         │
+                  └─────────────┬───────────┘
+                                │
+                                ▼
+                  ┌─────────────────────────┐
+                  │ PostgreSQL Analytics    │
+                  │ (Clean Tables / Views)  │
+                  └─────────────┬───────────┘
+                                │
+                                ├─────────────────────► Superset
+                                │                        - Datasets Config
+                                │                        - Charts & KPIs
+                                │                        - Dashboards
+                                │
+                                ▼
+                  ┌─────────────────────────┐
+                  │ Python Automation       │
+                  │ - superset_check.py     │
+                  │ - superset_fetch.py     │
+                  │ - ML / PyOD Models      │
+                  └─────────────┬───────────┘
+                                │
+                                ▼
+                  ┌─────────────────────────┐
+                  │ CI/CD (GitLab, pytest)  │
+                  └─────────────┬───────────┘
+                                │
+                                ▼
+                        End Users / Business Team
