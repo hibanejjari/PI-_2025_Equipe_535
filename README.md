@@ -518,7 +518,7 @@ Test with SuperSet :
 
 ## For the project, Superset is only the Frontend, we will also need
 
-PostgreSQL → store data & anomaly results. ( Its SQL SHell)
+PostgreSQL → store data & anomaly results. ( Its SQL Shell terminal)
 
 dbt → transformations + SQL modeling. (a developer framework for SQL inside the database.)
 
