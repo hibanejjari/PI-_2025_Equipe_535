@@ -645,7 +645,7 @@ flowchart TD
 - `scripts/superset_fetch.py`  
   → fetch results from Superset API  
   → **not auto-generated** (create manually)  
-  → **edit occasionally** (e.g., to change dataset IDs or queries)  
+  → **edit occasionally** (to change dataset IDs or queries)  
 
 - `tests/test_validation.py`  
   → automated data validation tests (pytest)  
