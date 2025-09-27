@@ -611,11 +611,13 @@ it takes raw data from your database, applies business logic, and creates clean,
 ```
 
 ```mermaid
+
 flowchart TD
     A[Raw_Data] --> B[dbt_Transformations]
     B --> C[PostgreSQL_Analytics]
     C --> D[Apache_Superset_Dashboards]
 ```
+
 ### Files to Modify or Add Once Real Database Is Connected
 
 - `models/src.yml` → define raw tables from the database  
