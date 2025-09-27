@@ -14,23 +14,49 @@ The workflow is:
 
 ## Table of Contents
 
+
 ### Setup
-- [Setup & Prerequisites](#setup--prerequisites)
-- [Quickstart](#quickstart)
-- [Superset Setup](#superset-setup)
-- [Setting up dbt with PostgreSQL](#setting-up-dbt-with-postgresql)
+- [Setup & Prerequisites](#setup--prerequisites)  
+  Install required tools (Docker, Git, Python, WSL2) and verify they work.
+- [Quickstart](#quickstart)  
+  run dbt → check PostgreSQL → load data in Superset → build a simple dashboard.
+
+- [Superset Setup](#superset-setup)  
+  Run Apache Superset with Docker, access the UI, and confirm the service is up.
+
+- [Setting up dbt with PostgreSQL](#setting-up-dbt-with-postgresql)  
+  Create a dbt project, configure `profiles.yml`, and connect dbt to PostgreSQL.
+
+
+---
 
 ### Code & Implementation
-- [Working with the Real Database](#working-with-the-real-database)
-- [Files to Modify or Add](#files-to-modify-or-add)
-- [Python Integration](#python-integration)
-- [CI/CD Pipeline](#cicd-pipeline)
+- [Working with the Real Database](#working-with-the-real-database)  
+  Connect real raw tables, define sources, and write dbt transformation models.
+
+- [Files to Modify or Add](#files-to-modify-or-add)  
+  List of key files to update (`models/src.yml`, `profiles.yml`, `superset_check.py`, `.gitlab-ci.yml`).
+
+- [Python Integration](#python-integration)  
+  Use Python scripts for anomaly detection, Superset API validation, and automation.
+
+- [CI/CD Pipeline](#cicd-pipeline)  
+  Add automated checks using `pytest` and GitLab CI/CD.
+
+---
 
 ### Informational
-- [Troubleshooting](#troubleshooting)
+- [Troubleshooting](#troubleshooting)  
+  Common errors (Docker not running, Superset auth failed) and fixes.
+
 - [Security](#security)
-- [Diagrams](#diagrams)
-- [Useful Links](#useful-links)
+  Our practices for access control, database permissions, and encryption.
+
+- [Diagrams](#diagrams)  
+  Visual overview of the data pipeline and workflows.
+
+- [Useful Links](#useful-links)  
+  References to Superset docs, dbt docs, and GitHub repos.
 
 
 
