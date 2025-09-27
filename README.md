@@ -48,7 +48,7 @@ Then create 2 files:
 - `superset_check.py`  
 - `reference_expected.csv`  
 
-Run the Python script:  
+Run the Python script:   ( in the terminal of the folder in which you saved it)
 
 ```bash
 python superset_check.py
