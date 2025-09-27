@@ -491,10 +491,11 @@ it takes raw data from your database, applies business logic, and creates clean,
 
 ```mermaid
 flowchart TD
-    A[Raw Data (Sales, CRM, Logs, Sensors)] --> B[dbt (Transformations & Cleaning)]
-    B --> C[PostgreSQL (Analytics Schema)]
-    C --> D[Apache Superset (Dashboards & KPIs)]
+    A[Raw_Data] --> B[dbt_Transformations]
+    B --> C[PostgreSQL_Analytics]
+    C --> D[Apache_Superset_Dashboards]
 ```
+
 
 
 
