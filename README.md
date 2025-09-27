@@ -44,7 +44,7 @@ Open ```[http://localhost:8088]```
 Default credentials:  
 **Username:** `admin` / **Password:** `admin`
 
-Then create 2 files:  
+Then create 2 files:  (that you can find on the github)
 - `superset_check.py`  
 - `reference_expected.csv`  
 
