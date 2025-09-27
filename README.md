@@ -10,15 +10,16 @@ The workflow is:
 ```
 ```mermaid
 flowchart LR
-    A[Raw Data <br>(CRM, Sales, Logs, Sensors)]
-    B[dbt <br>(Transformations, SQL Models)]
-    C[PostgreSQL <br>(Raw + Transformed Data)]
-    D[Superset <br>(Dashboards, KPIs, Visualization)]
-    E[Python <br>(Automation, ML, Anomaly Detection, CI/CD)]
+    A[Raw Data (CRM, Sales, Logs, Sensors)]
+    B[dbt - Transformations & SQL Models]
+    C[PostgreSQL - Raw + Transformed Data]
+    D[Superset - Dashboards & KPIs]
+    E[Python - Automation, ML, Anomaly Detection, CI/CD]
 
     A --> B --> C --> D
     C --> E
 ```
+
 
 ## Table of Contents
 
