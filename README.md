@@ -1,6 +1,6 @@
 # PI-_2025_Equipe_535
 
-#Summary of commands ; details below 
+# Summary of commands ; details below 
 #  Quickstart – Superset + dbt + PostgreSQL
 
 This project sets up a complete analytics pipeline:  
@@ -19,8 +19,7 @@ docker compose -f docker-compose-non-dev.yml up -d
 Open: [http://localhost:8088](http://localhost:8088)  
 Login: `admin / admin`
 
-📷 *Screenshot placeholder*  
-![Superset Login](images/superset_login.png)
+<img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/01bb527d-335a-4cd0-9994-ec4e6cf04306" />
 
 ---
 
@@ -33,8 +32,8 @@ pip install dbt-postgres
 dbt init my_project
 ```
 
-📷 *Screenshot placeholder*  
-![dbt Init](images/dbt_init.png)
+<img width="848" height="136" alt="image" src="https://github.com/user-attachments/assets/392d5b04-34fd-4bec-81fa-cf503d79f65b" />
+
 
 ---
 
@@ -62,8 +61,7 @@ cd C:\Users\<YourName>\Documents\my_project
 dbt debug
 ```
 
-📷 
-![dbt Debug](images/dbt_debug.png)
+<img width="1148" height="568" alt="image" src="https://github.com/user-attachments/assets/de6784a1-2396-42ab-b9ec-5d52affc6b83" />
 
 ---
 
@@ -81,8 +79,9 @@ Verify in PostgreSQL:
 SELECT * FROM hello_world;
 ```
 
-📷 *Screenshot placeholder*  
-![Hello World Model](images/dbt_hello_world.png)
+<img width="781" height="253" alt="image" src="https://github.com/user-attachments/assets/1ae6947a-8f55-48b2-9451-061be4444a10" />
+<img width="636" height="333" alt="image" src="https://github.com/user-attachments/assets/17aab0fc-c137-4017-ba81-8624377bcb9b" />
+
 
 ---
 
@@ -90,7 +89,7 @@ SELECT * FROM hello_world;
 
 ---
 
- After this, load **real raw data** into PostgreSQL, build transformations in **dbt**, and visualize them in **Superset dashboards**.
+ After this, we will load **real raw data** into PostgreSQL, build transformations in **dbt**, and visualize them in **Superset dashboards**.
 
 # Apache Superset – Project 110 Guide (Windows)
 
