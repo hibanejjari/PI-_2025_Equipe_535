@@ -812,12 +812,36 @@ it takes raw data from your database, applies business logic, and creates clean,
 
 ## Project Structure
 
-The repository is organized into clear folders to separate dbt, Python scripts, datasets, tests, and configuration:
-- **dbt/** → project config  
-- **scripts/** → Python automation & checks  
-- **data/** → static reference files  
-- **models/** → dbt SQL transformations  
-- **tests/** → validation & CI/CD tests  
+├── analyses/ # Placeholder for dbt analyses (future reports or queries)
+├── data/ # Raw/reference datasets
+│ └── reference_expected.csv
+├── dbt/ # dbt project configuration
+│ └── dbt_project.yml
+├── macros/ # Custom dbt macros (currently empty)
+├── models/ # dbt models (SQL transformations)
+│ ├── example/ # Example dbt models auto-generated
+│ │ ├── my_first_dbt_model.sql
+│ │ ├── my_second_dbt_model.sql
+│ │ └── schema.yml
+│ └── hello_world.sql # Custom model for initial dbt test
+├── scripts/ # Python automation and validation scripts
+│ └── superset_check.py
+├── seeds/ # Static CSV seeds for dbt (empty placeholder)
+├── snapshots/ # Snapshot definitions for dbt (empty placeholder)
+├── tests/ # Unit tests and dbt schema tests
+├── .gitignore
+└── README.md
+
+ Folder Roles
+- **analyses/** → for dbt analysis files (SQL reports not meant as models).  
+- **data/** → holds reference/test CSVs, e.g., used to validate Superset results.  
+- **dbt/** → configuration for the dbt project (`dbt_project.yml`).  
+- **macros/** → dbt macros (reusable SQL logic).  
+- **models/** → main dbt transformations (`example/` = auto-generated, `hello_world.sql` = test model).  
+- **scripts/** → Python scripts for automation, anomaly detection, or Superset validation.  
+- **seeds/** → CSVs you want dbt to load as database tables.  
+- **snapshots/** → to track slowly changing dimensions.  
+- **tests/** → dbt or Python tests to validate your data models.  
 
 
 This structure keeps **setup, transformations, scripts, and configuration** clearly separated for easier navigation.  
