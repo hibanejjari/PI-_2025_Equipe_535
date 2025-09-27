@@ -14,7 +14,6 @@ The workflow is:
 
 ## Table of Contents
 
-## Table of Contents
 
 ### Setup
 - [Setup & Prerequisites](#setup--prerequisites)
