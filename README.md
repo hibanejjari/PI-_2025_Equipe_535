@@ -14,17 +14,19 @@ The workflow is:
 
 ## Table of Contents
 
-- [Quickstart](#quickstart)
-- [Setup & Prerequisites](#setup--prerequisites)
-- [Superset Setup](#superset-setup)
-- [dbt Setup](#dbt-setup)
+
+- [Quickstart](#quickstart--superset--dbt--postgresql)
+- [Setup & Prerequisites](#prerequisites)
+- [Superset Setup](#get-and-run-superset-with-docker)
+- [dbt Setup](#setting-up-dbt-with-postgresql)
 - [Working with the Real Database](#working-with-the-real-database)
 - [Files to Modify or Add](#files-to-modify-or-add-once-real-database-is-connected)
-- [Python & CI/CD Integration](#python--cicd-integration)
+- [Python & CI/CD Integration](#python-integration)
 - [Troubleshooting](#troubleshooting)
 - [Security](#security)
 - [Diagrams](#diagrams)
 - [Useful Links](#useful-links)
+
 
 
 
