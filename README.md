@@ -1,5 +1,17 @@
 # PI-_2025_Equipe_535
 
+Iliana Jaunay
+
+Auriane Marcelino
+
+Tristan Molin
+
+Hiba Nejjari
+
+Devaraj Ramamoorthy
+
+Adrien Grevet
+
 # Apache Superset – Project 110 Guide (Windows)
 
 ### 1)	Prerequisites
