@@ -3,11 +3,18 @@
 This project sets up a complete analytics pipeline using **Apache Superset**, **PostgreSQL**, and **dbt**.  
 The workflow is:  
 ```text
-┌───────────────┐     ┌───────────────┐     ┌───────────────┐     ┌───────────────┐     ┌───────────────┐
-│   Raw Data    │ ──► │      dbt      │ ──► │  PostgreSQL   │ ──► │   Superset    │ ──► │    Python     │
-│               │     │               │     │ - Stores raw  │     │-Dashboards    │     │ - Automation  │
-│               │     │ - SQL models  │     │   & clean     │     │-Charts & KPIs │     │ - Anomaly ML  │
-└───────────────┘     └───────────────┘     └───────────────┘     └───────────────┘     └───────────────┘
+┌───────────────┐     ┌───────────────┐     ┌───────────────┐
+│   Raw Data    │ ──► │      dbt      │ ──► │  PostgreSQL   │
+└───────────────┘     └───────────────┘     └───────┬───────┘
+                                                    │
+                          ┌─────────────────────────┴─────────────────────────┐
+                          ▼                                                   ▼
+                ┌───────────────┐                                   ┌───────────────┐
+                │   Superset    │                                   │    Python     │
+                │-Dashboards    │                                   │ - Automation  │
+                │-Charts & KPIs │                                   │ - Anomaly ML  │
+                └───────────────┘                                   └───────────────┘
+
 ```
 
 
