@@ -211,7 +211,7 @@ cd C:\Users\<YourName>\Documents\my_project
 dbt debug
 ```
 
-<img width="1148" height="568" alt="image" src="https://github.com/user-attachments/assets/de6784a1-2396-42ab-b9ec-5d52affc6b83" />
+<img width="548" height="368" alt="image" src="https://github.com/user-attachments/assets/de6784a1-2396-42ab-b9ec-5d52affc6b83" />
 
 ---
 
@@ -229,8 +229,8 @@ Verify in PostgreSQL:
 SELECT * FROM hello_world;
 ```
 
-<img width="781" height="253" alt="image" src="https://github.com/user-attachments/assets/1ae6947a-8f55-48b2-9451-061be4444a10" />
-<img width="636" height="333" alt="image" src="https://github.com/user-attachments/assets/17aab0fc-c137-4017-ba81-8624377bcb9b" />
+<img width="481" height="253" alt="image" src="https://github.com/user-attachments/assets/1ae6947a-8f55-48b2-9451-061be4444a10" />
+<img width="436" height="233" alt="image" src="https://github.com/user-attachments/assets/17aab0fc-c137-4017-ba81-8624377bcb9b" />
 
 
 ---
