@@ -108,7 +108,9 @@ dbt init my_project
 ---
 
 3. **Configure PostgreSQL connection**
+   
 Create `C:\Users\<YourName>\.dbt\profiles.yml`:
+
 ```yaml
 my_project:
   outputs:
