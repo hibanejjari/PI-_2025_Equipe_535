@@ -839,46 +839,30 @@ it takes raw data from your database, applies business logic, and creates clean,
                                 ▼
                         End Users / Business Team
 
-
 ## Project Structure
 
-├── analyses/ # Placeholder for dbt analyses (future reports or queries)
+├── analyses/             # Placeholder for dbt analyses (future reports or queries)
+├── data/                 # Raw/reference datasets
+│   └── reference_expected.csv
+├── dbt/                  # dbt project configuration
+│   └── dbt_project.yml
+├── macros/               # Custom dbt macros (currently empty)
+├── models/               # dbt models (SQL transformations)
+│   ├── example/          # Example dbt models auto-generated
+│   │   ├── my_first_dbt_model.sql
+│   │   ├── my_second_dbt_model.sql
+│   │   └── schema.yml
+│   └── hello_world.sql   # Custom model for initial dbt test
+├── scripts/              # Python automation and validation scripts
+│   └── superset_check.py
+├── seeds/                # Static CSV seeds for dbt (empty placeholder)
+├── snapshots/            # Snapshot definitions for dbt (empty placeholder)
+├── tests/                # Unit tests and dbt schema tests
+├── .gitignore            # Git ignored files
+├── GIT_WORKFLOW.md       # Contributor guide: cloning, branching, pulling, pushing
+├── README.md             # Main documentation
+└── README_SUMMARY.md     # Summarized version for quick reading
 
-├── data/ # Raw/reference datasets
-
-│ └── reference_expected.csv
-
-├── dbt/ # dbt project configuration
-
-│ └── dbt_project.yml
-
-├── macros/ # Custom dbt macros (currently empty)
-
-├── models/ # dbt models (SQL transformations)
-
-│ ├── example/ # Example dbt models auto-generated
-
-│ │ ├── my_first_dbt_model.sql
-
-│ │ ├── my_second_dbt_model.sql
-
-│ │ └── schema.yml
-
-│ └── hello_world.sql # Custom model for initial dbt test
-
-├── scripts/ # Python automation and validation scripts
-
-│ └── superset_check.py
-
-├── seeds/ # Static CSV seeds for dbt (empty placeholder)
-
-├── snapshots/ # Snapshot definitions for dbt (empty placeholder)
-
-├── tests/ # Unit tests and dbt schema tests
-
-├── .gitignore
-
-└── README.md
 
  Folder Roles
 - **analyses/** → for dbt analysis files (SQL reports not meant as models).  
@@ -890,10 +874,6 @@ it takes raw data from your database, applies business logic, and creates clean,
 - **seeds/** → CSVs we want dbt to load as database tables.  
 - **snapshots/** → to track slowly changing dimensions.  
 - **tests/** → dbt or Python tests to validate the data models.  
-
-
-This structure keeps **setup, transformations, scripts, and configuration** clearly separated for easier navigation.  
-
 
 
 
