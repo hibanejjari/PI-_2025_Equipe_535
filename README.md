@@ -90,6 +90,9 @@ The workflow is:
   
 - [Project Structure](#project-structure)  
   Overview of how files and folders are organized in the repo.
+  
+- [Working with Git](GIT_WORKFLOW.md)
+  Instructions for cloning, creating branches, pulling, and pushing
 
 
 
