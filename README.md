@@ -125,7 +125,7 @@ Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent n
 ---
 
 ### Informational
-- [Troubleshooting](#8-troubleshooting)  
+- [Troubleshooting](#troubleshooting)  
   Common errors (Docker not running, Superset auth failed) and fixes.
 
 - [Security](#security)  
@@ -134,7 +134,7 @@ Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent n
 - [Diagrams](#ascii-diagram)  
   Visual overview of the data pipeline and workflows.
 
-- [Useful Links](#9-useful-links)  
+- [Useful Links](#useful-links)  
   References to Superset docs, dbt docs, GitHub repos, and installation guides.
 
 - [Project Structure](#project-structure)  
@@ -480,26 +480,6 @@ validate:
     - pytest -q
 ```
 
----
-
-### 8) Troubleshooting
-
-1. **ConnectionRefusedError** → Superset not running:  
-
-```bash
-docker compose -f docker-compose-non-dev.yml up -d
-```
-
-2. **Pipe not found / cannot pull images** → Start Docker Desktop; enable WSL 2 backend:  
-
-```bash
-docker run hello-world
-```
-
-3. **Auth failed** → Update USER/PWD  
-4. **Port 8088 in use** → Change mapping in `docker-compose-non-dev.yml`  
-
----
 
 
 ## Once we have the right database (what to modify)
@@ -548,53 +528,7 @@ data_resp.raise_for_status()
 ```
 superset.apache.org/docs/
 
-### 9 Useful Links
 
-**Superset Documentation**
-- API Overview: https://superset.apache.org/docs/api  
-- Installation Guide: https://superset.apache.org/docs/installation/installing-superset-using-docker-compose  
-- Configuration Guide: https://superset.apache.org/docs/configuration/configuring-superset  
-
-**dbt Documentation**
-- dbt Core (Intro & Guides): https://docs.getdbt.com/docs/introduction  
-- dbt Postgres Adapter: https://docs.getdbt.com/reference/warehouse-profiles/postgres-profile  
-- dbt CLI Reference: https://docs.getdbt.com/reference/dbt-commands  
-
-**PostgreSQL Documentation**
-- Official Docs: https://www.postgresql.org/docs/  
-- Windows Installer: https://www.enterprisedb.com/downloads/postgres-postgresql-downloads  
-
-**Docker**
-- Install Docker Desktop (Windows/Mac): https://docs.docker.com/desktop/  
-- Docker Compose Reference: https://docs.docker.com/compose/  
-
-**Git**
-- Git Installation: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
-
-**Python**
-- Python Downloads: https://www.python.org/downloads/  
-- venv Documentation: https://docs.python.org/3/library/venv.html  
-
-
-## Security
-
-How we protect the data :
-
-🔹 Secure Access & Authentication
-
-We restrict access to Superset through user accounts and role-based permissions. Each user has credentials, and roles ensure that sensitive dashboards or datasets are only visible to authorized people. This prevents unauthorized access.
-________________________________________
-🔹 Data Connections with Least Privilege
-
-Superset connects to databases using read-only accounts. This means users can query and visualize data but cannot modify or delete it. Access to the underlying data sources is minimized to reduce risks.
-________________________________________
-🔹 Network & Encryption
-
-When deployed in production, Superset is placed behind a secure network (VPN or firewall) and served via HTTPS. This ensures that data in transit between the user’s browser and Superset is encrypted, protecting confidential information from interception
-
-Test with SuperSet :
-
-<img width="1060" height="464" alt="image" src="https://github.com/user-attachments/assets/9e57cba4-2a8b-49d9-907b-67cf51140189" />
 
 ## For the project, Superset is only the Frontend, we will also need
 
@@ -925,11 +859,74 @@ it takes raw data from your database, applies business logic, and creates clean,
 **Tools to consider:**
 - OpenAI API (GPT models) for natural language reports.  
 - Hugging Face transformers for anomaly explanation or summarization.  
-- LangChain to connect PostgreSQL queries with LLMs.  
+- LangChain to connect PostgreSQL queries with LLMs.
+
+### Troubleshooting
+
+1. **ConnectionRefusedError** → Superset not running:  
+
+```bash
+docker compose -f docker-compose-non-dev.yml up -d
+```
+
+2. **Pipe not found / cannot pull images** → Start Docker Desktop; enable WSL 2 backend:  
+
+```bash
+docker run hello-world
+```
+
+3. **Auth failed** → Update USER/PWD  
+4. **Port 8088 in use** → Change mapping in `docker-compose-non-dev.yml`  
+
+---
+
+### Useful Links
+
+**Superset Documentation**
+- API Overview: https://superset.apache.org/docs/api  
+- Installation Guide: https://superset.apache.org/docs/installation/installing-superset-using-docker-compose  
+- Configuration Guide: https://superset.apache.org/docs/configuration/configuring-superset  
+
+**dbt Documentation**
+- dbt Core (Intro & Guides): https://docs.getdbt.com/docs/introduction  
+- dbt Postgres Adapter: https://docs.getdbt.com/reference/warehouse-profiles/postgres-profile  
+- dbt CLI Reference: https://docs.getdbt.com/reference/dbt-commands  
+
+**PostgreSQL Documentation**
+- Official Docs: https://www.postgresql.org/docs/  
+- Windows Installer: https://www.enterprisedb.com/downloads/postgres-postgresql-downloads  
+
+**Docker**
+- Install Docker Desktop (Windows/Mac): https://docs.docker.com/desktop/  
+- Docker Compose Reference: https://docs.docker.com/compose/  
+
+**Git**
+- Git Installation: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git  
+
+**Python**
+- Python Downloads: https://www.python.org/downloads/  
+- venv Documentation: https://docs.python.org/3/library/venv.html  
 
 
+## Security
 
+How we protect the data :
 
+🔹 Secure Access & Authentication
+
+We restrict access to Superset through user accounts and role-based permissions. Each user has credentials, and roles ensure that sensitive dashboards or datasets are only visible to authorized people. This prevents unauthorized access.
+________________________________________
+🔹 Data Connections with Least Privilege
+
+Superset connects to databases using read-only accounts. This means users can query and visualize data but cannot modify or delete it. Access to the underlying data sources is minimized to reduce risks.
+________________________________________
+🔹 Network & Encryption
+
+When deployed in production, Superset is placed behind a secure network (VPN or firewall) and served via HTTPS. This ensures that data in transit between the user’s browser and Superset is encrypted, protecting confidential information from interception
+
+Test with SuperSet :
+
+<img width="1060" height="464" alt="image" src="https://github.com/user-attachments/assets/9e57cba4-2a8b-49d9-907b-67cf51140189" />
 
 
 
