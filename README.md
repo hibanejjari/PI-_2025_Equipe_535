@@ -82,6 +82,9 @@ Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent n
 - [Problem Statement & Objectives](#problem-statement--objectives)  
   Why this project exists, challenges addressed, and the main goals (ESILV + Vinci Energies).  
 
+- [Pipeline Architecture](#pipeline-architecture)  
+  Visual diagram of how dbt, PostgreSQL, Python, Superset, and Generative AI interact.  
+
 ---
 
 ### Setup
@@ -91,7 +94,7 @@ Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent n
 -> **Simpler, Summarized Route**
 
 - [Quickstart](#quickstart--superset--dbt--postgresql)  
-  Run dbt → check PostgreSQL → load data in Superset → build a simple dashboard. 
+  Run dbt → check PostgreSQL → load data in Superset → build a simple dashboard.  
 
 -> **More Detailed Guides**
 
@@ -99,29 +102,25 @@ Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent n
   Run Apache Superset with Docker, access the UI, and confirm the service is up.
 
 - [Setting up dbt with PostgreSQL](#setting-up-dbt-with-postgresql)  
-  Create a dbt project, configure `profiles.yml`, and connect dbt to PostgreSQL.
-
----
-
-### Code & Implementation
-- [Generative AI Extension](#generative-ai-extension-ideas)  
-  Optional layer to explain anomalies, summarize dashboards, and generate reports.  
-
+  Create a dbt project, configure `profiles.yml`, and connect dbt to PostgreSQL.  
 
 ---
 
 ### Code & Implementation
 - [Working with the Real Database](#working-with-the-real-database)  
-  Connect real raw tables, define sources, and write dbt transformation models.
+  Connect raw tables, define sources, and write dbt transformation models.
 
 - [Files to Modify or Add](#files-to-modify-or-add-once-real-database-is-connected)  
-  List of key files to update (`models/src.yml`, `profiles.yml`, `superset_check.py`, `.gitlab-ci.yml`).
+  Key files to update (`models/src.yml`, `profiles.yml`, `superset_check.py`, `.gitlab-ci.yml`).  
 
 - [Python Integration](#6-python-proof-of-concept--validate-dashboard-data)  
   Use Python scripts for anomaly detection, Superset API validation, and automation.
 
 - [CI/CD Pipeline](#7-cicd-skeleton-gitlab)  
   Add automated checks using `pytest` and GitLab CI/CD.
+
+- [Generative AI Extension](#generative-ai-extension-ideas)  
+  Optional layer to explain anomalies, summarize dashboards, and generate reports.  
 
 ---
 
@@ -130,20 +129,19 @@ Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent n
   Common errors (Docker not running, Superset auth failed) and fixes.
 
 - [Security](#security)  
-  Our practices for access control, database permissions, and encryption.
+  Practices for access control, database permissions, and encryption.
 
 - [Diagrams](#ascii-diagram)  
   Visual overview of the data pipeline and workflows.
-  
+
 - [Useful Links](#9-useful-links)  
-  References to Superset docs, dbt docs, GitHub repos, and installation guides / links for all required tools.
+  References to Superset docs, dbt docs, GitHub repos, and installation guides.
 
 - [Project Structure](#project-structure)  
   Overview of how files and folders are organized in the repo.
-  
+
 - [Working with Git](GIT_WORKFLOW.md)  
   Instructions for cloning, creating branches, pulling, and pushing.
-
 
 
 
