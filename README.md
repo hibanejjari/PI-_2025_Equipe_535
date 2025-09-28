@@ -6,32 +6,33 @@ This repo sets up the foundations of a data analytics pipeline with dbt, Postgre
 
 ## Problem Statement & Objectives
 
-### English
-This project, carried out by ESILV students in collaboration with Vinci Energies, addresses the challenge of **data quality and dashboard supervision**.  
-Business dashboards (built in Apache Superset) are critical for decision-making, but anomalies, inconsistencies, or data errors can compromise their reliability.  
+**English**  
+This project, developed by ESILV students with Vinci Energies, tackles the challenge of **data quality and dashboard supervision**.  
+Superset dashboards are key for decision-making, but anomalies or errors can affect reliability.  
 
-The main objectives are:
-- Ensure **data quality and consistency** across transformed datasets.  
-- Develop **automated validation scripts** (Python) to query Superset dashboards and compare results against reference data.  
-- Detect and report **anomalies** in metrics and KPIs.  
-- Integrate these checks into a **CI/CD pipeline (GitLab)** for continuous monitoring.  
-- Provide a **scalable data pipeline** (dbt + PostgreSQL + Superset + Python) as a foundation for analytics supervision.  
+**Objectives:**  
+- Ensure **data consistency** after transformations.  
+- Build **Python scripts** to validate Superset dashboards vs. reference data.  
+- Detect and report **anomalies** in KPIs.  
+- Integrate checks in a **CI/CD pipeline (GitLab)**.  
+- Provide a scalable pipeline with **dbt + PostgreSQL + Superset + Python**.  
 
 ---
 
-### Français
-Ce projet, mené par des étudiants de l’ESILV en collaboration avec Vinci Energies, vise à répondre au défi de la **qualité de la donnée et de la supervision des dashboards**.  
-Les tableaux de bord métiers (développés avec Apache Superset) sont essentiels pour la prise de décision, mais des anomalies, incohérences ou erreurs de données peuvent compromettre leur fiabilité.  
+**Français**  
+Ce projet, mené par des étudiants de l’ESILV avec Vinci Energies, vise à garantir la **qualité des données et la supervision des dashboards**.  
+Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent nuire à leur fiabilité.  
 
-Les objectifs principaux sont :
-- Garantir la **qualité et la cohérence des données** après transformation.  
-- Développer des **scripts de validation automatisés** (Python) interrogeant Superset et comparant les résultats avec des données de référence.  
-- Détecter et signaler des **anomalies** dans les indicateurs et KPIs.  
-- Intégrer ces contrôles dans une **pipeline CI/CD (GitLab)** pour une supervision continue.  
-- Mettre en place une **pipeline analytique** (dbt + PostgreSQL + Superset + Python) servant de base à la supervision des dashboards.  
+**Objectifs :**  
+- Assurer la **cohérence des données** après transformation.  
+- Développer des **scripts Python** validant Superset avec des données de référence.  
+- Détecter et signaler des **anomalies** dans les KPIs.  
+- Intégrer ces contrôles dans une **pipeline CI/CD (GitLab)**.  
+- Mettre en place une pipeline évolutive avec **dbt + PostgreSQL + Superset + Python**.  
 
 
-The workflow is:  
+
+The workflow we have in mind is:  
 ```text
 ┌───────────────┐     ┌───────────────┐
 │   Raw Data    │ ──► │      dbt      │
