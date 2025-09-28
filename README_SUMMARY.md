@@ -36,7 +36,7 @@ This project sets up a **data analytics pipeline** using:
 
 ```
 
-##  Table of Contents
+## Table of Contents
 1. [Overview](#-overview)
 2. [Quickstart](#-quickstart)
    - [Start Superset (Docker)](#1-start-superset-docker)
@@ -44,8 +44,9 @@ This project sets up a **data analytics pipeline** using:
    - [Configure PostgreSQL Connection](#3-configure-postgresql-connection)
    - [Test + Run First Model](#4-test--run-first-model)
    - [Visualize in Superset](#5-visualize-in-superset)
-3. [Key Files](#-key-files)
+3. [Key Files](#key-files)
 4. [References](#-references)
+
 
 ---
 
@@ -138,4 +139,4 @@ Expected output: `1 | hello_dbt`
 
 ---
 
--> For detailed guides, troubleshooting, CI/CD, and security practices, see [`README_FULL.md`](README_FULL.md).
+-> For detailed guides, troubleshooting, CI/CD, and security practices, see [`README.md`](README.md).
