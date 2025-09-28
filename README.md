@@ -852,10 +852,17 @@ it takes raw data from your database, applies business logic, and creates clean,
 
 ## Generative AI Extension (Ideas)
 
-**Possible uses:**
-- Explain anomalies detected by Python scripts.  
-- Summarize Superset dashboards into plain text.  
-- Auto-generate reports for business stakeholders.  
+_ Superset stays the main dashboard UI.
+_ We can build a separate AI page (in Streamlit, Flask, or React).
+- This page connects to Superset via API → fetches datasets/KPIs.
+- AI model (GPT) generates:
+    - Summaries of dashboards.
+    - Explanations of anomalies.
+    - Suggestions for actions.
+
+Integration options:
+- Separate companion app (linked from Superset).
+- Embedded view (AI page inside a Superset dashboard).
 
 **Tools to consider:**
 - OpenAI API (GPT models) for natural language reports.  
