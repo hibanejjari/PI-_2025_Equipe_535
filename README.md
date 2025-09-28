@@ -34,34 +34,49 @@ Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent n
 
 
 
-The workflow we have in mind is:  
-```text
-┌───────────────┐     ┌───────────────┐
-│   Raw Data    │ ──► │      dbt      │
-└───────────────┘     └───────┬───────┘
-                              │
-                              ▼
-                     ┌───────────────┐
-                     │  PostgreSQL   │
-                     │ - Stores raw  │
-                     │   & clean     │
-                     └───────┬───────┘
-                 ┌───────────┴───────────┐
-                 │                       │
-                 ▼                       ▼
-        ┌───────────────┐       ┌───────────────┐
-        │    Python     │       │   Superset    │
-        │ - Automation  │       │ - Dashboards  │
-        │ - Anomaly ML  │       │ - Charts/KPIs │
-        │ - Enrichment  │       │   (read-only) │
-        └───────────────┘       └───────────────┘
-                 │
-                 ▼
-        (writes results back
-           into PostgreSQL)
+┌───────────────┐
+│   Raw Data    │
+└───────┬───────┘
+        │
+        ▼
+┌───────────────┐
+│      dbt      │
+│ - Transforms  │
+│ - Cleans      │
+└───────┬───────┘
+        │
+        ▼
+┌───────────────┐
+│  PostgreSQL   │
+│ - Stores raw  │
+│   & modeled   │
+│   datasets    │
+└───────┬───────┘
+        │
+ ┌───────┴────────┐
+ │                │
+ ▼                ▼
+┌───────────────┐ ┌───────────────┐
+│    Python     │ │   Superset    │
+│ - Automation  │ │ - Dashboards  │
+│ - Anomaly ML  │ │ - Charts/KPIs │
+│ - Validation  │ │ - Read-only   │
+└───────┬───────┘ └───────────────┘
+        │
+        ▼
+┌───────────────┐
+│ Generative AI │
+│ - Explains    │
+│   anomalies   │
+│ - Generates   │
+│   reports     │
+└───────────────┘
+        │
+        ▼
+ (writes insights &
+ explanations back
+     to PostgreSQL)
 
-
-```
 
 **Raw data is first transformed by dbt and stored in PostgreSQL, then Python reads from PostgreSQL to run automation and anomaly detection and writes results back, and finally Superset connects to PostgreSQL in read-only mode to visualize both the clean and enriched data.**
 
@@ -94,6 +109,13 @@ The workflow we have in mind is:
 
 - [Setting up dbt with PostgreSQL](#setting-up-dbt-with-postgresql)  
   Create a dbt project, configure `profiles.yml`, and connect dbt to PostgreSQL.
+
+---
+
+### Code & Implementation
+- [Generative AI Extension](#generative-ai-extension-ideas)  
+  Optional layer to explain anomalies, summarize dashboards, and generate reports.  
+
 
 ---
 
@@ -767,31 +789,40 @@ Once a real database is available (instead of the simple `hello_world` model), t
 
 With this workflow, dbt acts as the **transformation layer**:  
 it takes raw data from your database, applies business logic, and creates clean, analytics-ready tables for dashboards and reports.
-
 ## ASCII Diagram 
 
 ```text
         ┌─────────────┐
-        │   Raw Data  │   (sales, CRM, logs, sensors for example)
+        │   Raw Data  │   (sales, CRM, logs, sensors, CSVs, APIs for example)
         └──────┬──────┘
                │
                ▼
         ┌─────────────┐
-        │   dbt       │   (SQL transformations, cleaning, joins)
+        │    dbt      │   (SQL transformations, cleaning, joins)
         └──────┬──────┘
                │
                ▼
         ┌─────────────┐
-        │ PostgreSQL  │   (analytics schema with dbt models)
+        │ PostgreSQL  │   (stores raw + modeled tables for analytics)
         └──────┬──────┘
                │
-               ▼
-        ┌─────────────┐
-        │ Superset    │   (dashboards, KPIs, anomaly visualization)
-        └─────────────┘
+        ┌──────┴──────┐
+        │             │
+        ▼             ▼
+┌─────────────┐   ┌─────────────┐
+│   Python    │   │  Superset   │
+│ (validation │   │ (dashboards │
+│ anomaly ML, │   │   KPIs,     │
+│ automation) │   │  charts)    │
+└──────┬──────┘   └─────────────┘
+       │
+       ▼
+┌─────────────┐
+│ Generative  │   (explain anomalies, summaries,
+│ AI (future) │    auto-reports for stakeholders)
+└─────────────┘
+
 ```
-
-
 
 ### Files to Modify or Add Once Real Database Is Connected
 
@@ -830,12 +861,16 @@ it takes raw data from your database, applies business logic, and creates clean,
   → **not auto-generated** (create manually at repo root)  
   → **edit occasionally** (when pipeline steps or dependencies change)  
 
-  
+---
+
+### Architecture with Real Database
+
+```text
                   ┌─────────────────────────┐
                   │   Raw Data (CRM, Logs,  │
-                  │   Sensors, Sales) │
+                  │   Sensors, Sales)       │
                   └─────────────┬───────────┘
-                                │  (CSV/ETL)
+                                │  (CSV/API/ETL)
                                 ▼
                   ┌─────────────────────────┐
                   │ PostgreSQL Raw Tables   │
@@ -855,28 +890,29 @@ it takes raw data from your database, applies business logic, and creates clean,
                   │ (Clean Tables / Views)  │
                   └─────────────┬───────────┘
                                 │
-                                ├─────────────────────► Superset
-                                │                        - Datasets Config
-                                │                        - Charts & KPIs
-                                │                        - Dashboards
-                                │
-                                ▼
-                  ┌─────────────────────────┐
-                  │ Python Automation       │
-                  │ - superset_check.py     │
-                  │ - superset_fetch.py     │
-                  │ - ML / PyOD Models      │
-                  └─────────────┬───────────┘
-                                │
-                                ▼
+          ┌─────────────────────┼───────────────────────┐
+          │                     │                       │
+          ▼                     ▼                       ▼
+   ┌───────────────┐      ┌───────────────┐      ┌────────────────┐
+   │   Superset    │      │    Python     │      │  Generative AI │
+   │ - Datasets    │      │ - superset_   │      │ - Explain KPIs │
+   │ - Dashboards  │      │   check.py    │      │ - Summarize    │
+   │ - Charts/KPIs │      │ - superset_   │      │   dashboards   │
+   │               │      │   fetch.py    │      │ - Reports      │
+   └───────┬───────┘      │ - ML / PyOD   │      └────────────────┘
+           │               └───────────────┘              │
+           │                       │                      │
+           └─────────────┬─────────┴──────────────┬──────┘
+                         ▼                        ▼
                   ┌─────────────────────────┐
                   │ CI/CD (GitLab, pytest)  │
                   └─────────────┬───────────┘
                                 │
                                 ▼
-                        End Users / Business Team
+                       End Users / Business Team
 
-## Project Structure
+
+
 
 ## Project Structure
 
@@ -935,6 +971,19 @@ it takes raw data from your database, applies business logic, and creates clean,
 - **snapshots/** → to track slowly changing dimensions.  
 - **tests/** → dbt or Python tests to validate the data models.  
 
+
+
+## Generative AI Extension (Ideas)
+
+**Possible uses:**
+- Explain anomalies detected by Python scripts.  
+- Summarize Superset dashboards into plain text.  
+- Auto-generate reports for business stakeholders.  
+
+**Tools to consider:**
+- OpenAI API (GPT models) for natural language reports.  
+- Hugging Face transformers for anomaly explanation or summarization.  
+- LangChain to connect PostgreSQL queries with LLMs.  
 
 
 
