@@ -2,7 +2,8 @@
 
 # PI-_2025_Equipe_535
 
-This project sets up a complete analytics pipeline using **Apache Superset**, **PostgreSQL**, and **dbt**.  
+This repo sets up the foundations of a data analytics pipeline with dbt, PostgreSQL, Python, and Superset (future ETL: Extract, Transform, Load).
+
 The workflow is:  
 ```text
 ┌───────────────┐     ┌───────────────┐
