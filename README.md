@@ -1,3 +1,5 @@
+>  For a summarized version of this project (quick reading & understanding), see [README_SUMMARY.md](README_SUMMARY.md).
+
 # PI-_2025_Equipe_535
 
 This project sets up a complete analytics pipeline using **Apache Superset**, **PostgreSQL**, and **dbt**.  
