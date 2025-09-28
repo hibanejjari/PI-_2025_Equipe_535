@@ -1,7 +1,7 @@
 # PI-_2025_Equipe_535
 
 ## Overview
-This project, carried out**with Vinci Energies**, sets up a **data analytics pipeline** for data quality and dashboard supervision.
+This project, carried out **with Vinci Energies**, sets up a **data analytics pipeline** for data quality and dashboard supervision.
 
 It integrates:
 - **dbt** → transforms raw data into clean, reliable tables  
