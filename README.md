@@ -97,7 +97,8 @@ The workflow is:
 
 
 # Summary of commands 
-# For full setup details, jump to [Apache Superset – Project 110 Guide (Windows)](#apache-superset--project-110-guide-windows).
+
+### For full setup details, jump to [Apache Superset – Project 110 Guide (Windows)](#apache-superset--project-110-guide-windows).
 #  Quickstart – Superset + dbt + PostgreSQL
 
 
