@@ -1,4 +1,4 @@
->  For a summarized version of this project (quick reading & understanding), see [README_SUMMARY.md](README_SUMMARY.md).
+#### For a shorter overview and quick setup guide, see [README_SUMMARY.md](README_SUMMARY.md).  
 
 # PI-_2025_Equipe_535
 
