@@ -4,6 +4,33 @@
 
 This repo sets up the foundations of a data analytics pipeline with dbt, PostgreSQL, Python, and Superset (future ETL: Extract, Transform, Load).
 
+## Problem Statement & Objectives
+
+### English
+This project, carried out by ESILV students in collaboration with Vinci Energies, addresses the challenge of **data quality and dashboard supervision**.  
+Business dashboards (built in Apache Superset) are critical for decision-making, but anomalies, inconsistencies, or data errors can compromise their reliability.  
+
+The main objectives are:
+- Ensure **data quality and consistency** across transformed datasets.  
+- Develop **automated validation scripts** (Python) to query Superset dashboards and compare results against reference data.  
+- Detect and report **anomalies** in metrics and KPIs.  
+- Integrate these checks into a **CI/CD pipeline (GitLab)** for continuous monitoring.  
+- Provide a **scalable data pipeline** (dbt + PostgreSQL + Superset + Python) as a foundation for analytics supervision.  
+
+---
+
+### Français
+Ce projet, mené par des étudiants de l’ESILV en collaboration avec Vinci Energies, vise à répondre au défi de la **qualité de la donnée et de la supervision des dashboards**.  
+Les tableaux de bord métiers (développés avec Apache Superset) sont essentiels pour la prise de décision, mais des anomalies, incohérences ou erreurs de données peuvent compromettre leur fiabilité.  
+
+Les objectifs principaux sont :
+- Garantir la **qualité et la cohérence des données** après transformation.  
+- Développer des **scripts de validation automatisés** (Python) interrogeant Superset et comparant les résultats avec des données de référence.  
+- Détecter et signaler des **anomalies** dans les indicateurs et KPIs.  
+- Intégrer ces contrôles dans une **pipeline CI/CD (GitLab)** pour une supervision continue.  
+- Mettre en place une **pipeline analytique** (dbt + PostgreSQL + Superset + Python) servant de base à la supervision des dashboards.  
+
+
 The workflow is:  
 ```text
 ┌───────────────┐     ┌───────────────┐
@@ -37,8 +64,16 @@ The workflow is:
 
 
 
-
 ## Table of Contents
+
+### Introduction
+- [Overview](#overview)  
+  General context and purpose of the project.  
+
+- [Problem Statement & Objectives](#problem-statement--objectives)  
+  Why this project exists, challenges addressed, and the main goals (ESILV + Vinci Energies).  
+
+---
 
 ### Setup
 - [Setup & Prerequisites](#1-prerequisites)  
@@ -51,12 +86,11 @@ The workflow is:
 
 -> **More Detailed Guides**
 
-- [Superset Setup](#apache-superset--project-110-guide-windows) 
+- [Superset Setup](#apache-superset--project-110-guide-windows)  
   Run Apache Superset with Docker, access the UI, and confirm the service is up.
 
 - [Setting up dbt with PostgreSQL](#setting-up-dbt-with-postgresql)  
   Create a dbt project, configure `profiles.yml`, and connect dbt to PostgreSQL.
-
 
 ---
 
@@ -88,12 +122,11 @@ The workflow is:
 - [Useful Links](#9-useful-links)  
   References to Superset docs, dbt docs, GitHub repos, and installation guides / links for all required tools.
 
-  
 - [Project Structure](#project-structure)  
   Overview of how files and folders are organized in the repo.
   
-- [Working with Git](GIT_WORKFLOW.md)
-  Instructions for cloning, creating branches, pulling, and pushing
+- [Working with Git](GIT_WORKFLOW.md)  
+  Instructions for cloning, creating branches, pulling, and pushing.
 
 
 
