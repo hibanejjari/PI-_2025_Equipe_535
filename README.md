@@ -33,29 +33,26 @@ Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent n
 - Mettre en place une pipeline évolutive avec **dbt + PostgreSQL + Superset + Python**.  
 
 
+## Data Pipeline Diagram
 
+```text
 ┌───────────────┐
 │   Raw Data    │
 └───────┬───────┘
         │
         ▼
 ┌───────────────┐
-│      dbt      │
-│ - Transforms  │
-│ - Cleans      │
+│      dbt      │   (Transforms, Cleans)
 └───────┬───────┘
         │
         ▼
 ┌───────────────┐
-│  PostgreSQL   │
-│ - Stores raw  │
-│   & modeled   │
-│   datasets    │
+│  PostgreSQL   │   (Stores raw & modeled datasets)
 └───────┬───────┘
         │
- ┌───────┴────────┐
- │                │
- ▼                ▼
+ ┌──────┴────────┐
+ │               │
+ ▼               ▼
 ┌───────────────┐ ┌───────────────┐
 │    Python     │ │   Superset    │
 │ - Automation  │ │ - Dashboards  │
@@ -65,17 +62,11 @@ Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent n
         │
         ▼
 ┌───────────────┐
-│ Generative AI │
-│ - Explains    │
-│   anomalies   │
-│ - Generates   │
-│   reports     │
+│ Generative AI │   (Explains anomalies,
+│ - Reports     │    generates insights,
+│ - Summaries   │    writes back to PostgreSQL)
 └───────────────┘
-        │
-        ▼
- (writes insights &
- explanations back
-     to PostgreSQL)
+```
 
 
 **Raw data is first transformed by dbt and stored in PostgreSQL, then Python reads from PostgreSQL to run automation and anomaly detection and writes results back, and finally Superset connects to PostgreSQL in read-only mode to visualize both the clean and enriched data.**
