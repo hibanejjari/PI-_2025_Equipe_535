@@ -7,7 +7,8 @@ This repo sets up the foundations of a data analytics pipeline with dbt, Postgre
 ## Problem Statement & Objectives
 
 **English**  
-This project, developed by ESILV students with Vinci Energies, tackles the challenge of **data quality and dashboard supervision**.  
+This project, developed with Vinci Energies, tackles the challenge of **data quality and dashboard supervision**.  
+
 Superset dashboards are key for decision-making, but anomalies or errors can affect reliability.  
 
 **Objectives:**  
@@ -20,7 +21,8 @@ Superset dashboards are key for decision-making, but anomalies or errors can aff
 ---
 
 **Français**  
-Ce projet, mené par des étudiants de l’ESILV avec Vinci Energies, vise à garantir la **qualité des données et la supervision des dashboards**.  
+Ce projet, mené avec Vinci Energies, vise à garantir la **qualité des données et la supervision des dashboards**.  
+
 Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent nuire à leur fiabilité.  
 
 **Objectifs :**  
