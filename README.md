@@ -852,8 +852,8 @@ it takes raw data from your database, applies business logic, and creates clean,
 
 ## Generative AI Extension (Ideas)
 
-_ Superset stays the main dashboard UI.
-_ We can build a separate AI page (in Streamlit, Flask, or React).
+- Superset stays the main dashboard UI.
+- We can build a separate AI page (in Streamlit, Flask, or React).
 - This page connects to Superset via API → fetches datasets/KPIs.
 - AI model (GPT) generates:
     - Summaries of dashboards.
