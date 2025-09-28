@@ -841,27 +841,50 @@ it takes raw data from your database, applies business logic, and creates clean,
 
 ## Project Structure
 
-├── analyses/             # Placeholder for dbt analyses (future reports or queries)
-├── data/                 # Raw/reference datasets
-│   └── reference_expected.csv
-├── dbt/                  # dbt project configuration
-│   └── dbt_project.yml
-├── macros/               # Custom dbt macros (currently empty)
-├── models/               # dbt models (SQL transformations)
-│   ├── example/          # Example dbt models auto-generated
-│   │   ├── my_first_dbt_model.sql
-│   │   ├── my_second_dbt_model.sql
-│   │   └── schema.yml
-│   └── hello_world.sql   # Custom model for initial dbt test
-├── scripts/              # Python automation and validation scripts
-│   └── superset_check.py
-├── seeds/                # Static CSV seeds for dbt (empty placeholder)
-├── snapshots/            # Snapshot definitions for dbt (empty placeholder)
-├── tests/                # Unit tests and dbt schema tests
-├── .gitignore            # Git ignored files
-├── GIT_WORKFLOW.md       # Contributor guide: cloning, branching, pulling, pushing
-├── README.md             # Main documentation
-└── README_SUMMARY.md     # Summarized version for quick reading
+## Project Structure
+
+├── analyses/             # Placeholder for dbt analyses (future reports or queries)  
+
+├── data/                 # Raw/reference datasets  
+
+│   └── reference_expected.csv  
+
+├── dbt/                  # dbt project configuration  
+
+│   └── dbt_project.yml  
+
+├── macros/               # Custom dbt macros (currently empty)  
+
+├── models/               # dbt models (SQL transformations)  
+
+│   ├── example/          # Example dbt models auto-generated  
+
+│   │   ├── my_first_dbt_model.sql  
+
+│   │   ├── my_second_dbt_model.sql  
+
+│   │   └── schema.yml  
+
+│   └── hello_world.sql   # Custom model for initial dbt test  
+
+├── scripts/              # Python automation and validation scripts  
+
+│   └── superset_check.py  
+
+├── seeds/                # Static CSV seeds for dbt (empty placeholder)  
+
+├── snapshots/            # Snapshot definitions for dbt (empty placeholder)  
+
+├── tests/                # Unit tests and dbt schema tests  
+
+├── .gitignore            # Git ignored files  
+
+├── GIT_WORKFLOW.md       # Contributor guide: cloning, branching, pulling, pushing  
+
+├── README.md             # Main documentation  
+
+└── README_SUMMARY.md     # Summarized version for quick reading  
+
 
 
  Folder Roles
