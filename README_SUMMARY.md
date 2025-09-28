@@ -35,7 +35,6 @@ This project sets up a **data analytics pipeline** using:
 
 
 ```
-
 ## Table of Contents
 1. [Overview](#overview)
 2. [Quickstart](#quickstart)
@@ -46,6 +45,7 @@ This project sets up a **data analytics pipeline** using:
    - [Visualize in Superset](#5-visualize-in-superset)
 3. [Key Files](#key-files)
 4. [References](#references)
+5. [Working with Git](GIT_WORKFLOW.md)
 
 
 
