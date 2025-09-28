@@ -174,9 +174,10 @@ Login: `admin / admin`
 ```bash
 cd C:\Users\<YourName>\Documents
 python -m venv dbt_env
-C:\Users\<YourName>\Documents\dbt_env\Scripts\activate
+source dbt_env/bin/activate
 pip install dbt-postgres
 dbt init my_project
+
 ```
 
 <img width="848" height="136" alt="image" src="https://github.com/user-attachments/assets/392d5b04-34fd-4bec-81fa-cf503d79f65b" />
@@ -193,13 +194,13 @@ my_project:
   outputs:
     dev:
       type: postgres
-      host: localhost
-      user: postgres
-      password: your_password_here
-      port: 5432
-      dbname: postgres
+      host: <host>
+      user: <user>
+      password: <password>
+      dbname: <db>
       schema: public
   target: dev
+
 ```
 
 ---
