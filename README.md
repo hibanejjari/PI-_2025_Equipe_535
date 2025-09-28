@@ -5,7 +5,7 @@ The workflow is:
 ```text
 ┌───────────────┐     ┌───────────────┐     ┌───────────────┐     ┌───────────────┐     ┌───────────────┐
 │   Raw Data    │ ──► │      dbt      │ ──► │  PostgreSQL   │ ──► │   Superset    │ ──► │    Python     │
-│               │     │ - Transforms  │     │ - Stores raw  │     │-Dashboards    │     │ - Automation  │
+│               │     │               │     │ - Stores raw  │     │-Dashboards    │     │ - Automation  │
 │               │     │ - SQL models  │     │   & clean     │     │-Charts & KPIs │     │ - Anomaly ML  │
 └───────────────┘     └───────────────┘     └───────────────┘     └───────────────┘     └───────────────┘
 ```
