@@ -3,19 +3,35 @@
 This project sets up a complete analytics pipeline using **Apache Superset**, **PostgreSQL**, and **dbt**.  
 The workflow is:  
 ```text
-┌───────────────┐     ┌───────────────┐     ┌───────────────┐
-│   Raw Data    │ ──► │      dbt      │ ──► │  PostgreSQL   │
-└───────────────┘     └───────────────┘     └───────┬───────┘
-                                                    │
-                          ┌─────────────────────────┴─────────────────────────┐
-                          ▼                                                   ▼
-                ┌───────────────┐                                   ┌───────────────┐
-                │   Superset    │                                   │    Python     │
-                │-Dashboards    │                                   │ - Automation  │
-                │-Charts & KPIs │                                   │ - Anomaly ML  │
-                └───────────────┘                                   └───────────────┘
+┌───────────────┐     ┌───────────────┐
+│   Raw Data    │ ──► │      dbt      │
+└───────────────┘     └───────┬───────┘
+                              │
+                              ▼
+                     ┌───────────────┐
+                     │  PostgreSQL   │
+                     │ - Stores raw  │
+                     │   & clean     │
+                     └───────┬───────┘
+                 ┌───────────┴───────────┐
+                 │                       │
+                 ▼                       ▼
+        ┌───────────────┐       ┌───────────────┐
+        │    Python     │       │   Superset    │
+        │ - Automation  │       │ - Dashboards  │
+        │ - Anomaly ML  │       │ - Charts/KPIs │
+        │ - Enrichment  │       │   (read-only) │
+        └───────────────┘       └───────────────┘
+                 │
+                 ▼
+        (writes results back
+           into PostgreSQL)
+
 
 ```
+
+**Raw data is first transformed by dbt and stored in PostgreSQL, then Python reads from PostgreSQL to run automation and anomaly detection and writes results back, and finally Superset connects to PostgreSQL in read-only mode to visualize both the clean and enriched data.**
+
 
 
 
