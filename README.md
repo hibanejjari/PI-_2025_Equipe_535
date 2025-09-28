@@ -850,24 +850,21 @@ it takes raw data from your database, applies business logic, and creates clean,
 
 
 
-## Generative AI Extension (Ideas)
+## Generative AI Extension (Ideas)  
 
-- Superset stays the main dashboard UI.
-- We can build a separate AI page (in Streamlit, Flask, or React).
-- This page connects to Superset via API → fetches datasets/KPIs.
-- AI model (GPT) generates:
-    - Summaries of dashboards.
-    - Explanations of anomalies.
-    - Suggestions for actions.
+- **Superset = main dashboard UI**  
+- **AI page** (Streamlit / Flask / React) connected via Superset API  
+- **AI model (GPT/LLM) generates:** summaries, anomaly explanations, action suggestions  
 
-Integration options:
-- Separate companion app (linked from Superset).
-- Embedded view (AI page inside a Superset dashboard).
+**Integration options:**  
+- Companion app (linked from Superset)  
+- Embedded view (AI page inside Superset)  
 
-**Tools to consider:**
-- OpenAI API (GPT models) for natural language reports.  
-- Hugging Face transformers for anomaly explanation or summarization.  
-- LangChain to connect PostgreSQL queries with LLMs.
+**Tools:**  
+- OpenAI API (reports)  
+- Hugging Face (summarization)  
+- LangChain (PostgreSQL + LLMs)  
+
 
 ### Troubleshooting
 
