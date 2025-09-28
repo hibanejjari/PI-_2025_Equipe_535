@@ -594,14 +594,14 @@ dbt needs a profile to connect to PostgreSQL.
          type: postgres
          host: localhost
          user: postgres
-         password: your_password_here
+         password: password
          port: 5432
          dbname: postgres
          schema: public
      target: dev
    ```
 
-⚠️ Replace `your_password_here` with your actual PostgreSQL password.
+ Replace `password` with actual PostgreSQL password.
 
 ---
 
