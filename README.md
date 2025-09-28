@@ -166,7 +166,7 @@ docker compose -f docker-compose-non-dev.yml up -d
 Open: [http://localhost:8088](http://localhost:8088)  
 Login: `admin / admin`
 
-<img width="800" height="600" alt="image" src="https://github.com/user-attachments/assets/01bb527d-335a-4cd0-9994-ec4e6cf04306" />
+<img width="400" height="300" alt="image" src="https://github.com/user-attachments/assets/01bb527d-335a-4cd0-9994-ec4e6cf04306" />
 
 ---
 
@@ -180,7 +180,7 @@ dbt init my_project
 
 ```
 
-<img width="848" height="136" alt="image" src="https://github.com/user-attachments/assets/392d5b04-34fd-4bec-81fa-cf503d79f65b" />
+<img width="448" height="136" alt="image" src="https://github.com/user-attachments/assets/392d5b04-34fd-4bec-81fa-cf503d79f65b" />
 
 
 ---
