@@ -761,9 +761,9 @@ it takes raw data from your database, applies business logic, and creates clean,
 | `tests/test_validation.py`   | Automated validation tests (pytest)          | Create manually → extend regularly with new tests |
 | `./.gitlab-ci.yml`           | GitLab CI/CD pipeline (dbt + Python checks)  | Create manually → adjust if pipeline steps change |
 
-Updated :
 
-## Files to Modify or Add
+
+### Updated : Files to Modify or Add
 
 | Category         | Files / Paths | Purpose |
 |------------------|---------------|---------|
