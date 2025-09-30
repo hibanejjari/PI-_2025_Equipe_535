@@ -37,35 +37,22 @@ Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent n
 
 ```text
 ┌───────────────┐
-│   Raw Data    │
+│   Superset    │   (Dashboards & KPIs already built)
 └───────┬───────┘
         │
         ▼
 ┌───────────────┐
-│      dbt      │   (Transforms, Cleans)
+│    Python     │   (Queries dashboards via API,
+│ - Validation  │    compares to reference data,
+│ - Anomaly ML  │    flags inconsistencies)
 └───────┬───────┘
-        │
-        ▼
-┌───────────────┐
-│  PostgreSQL   │   (Stores raw & modeled datasets)
-└───────┬───────┘
-        │
- ┌──────┴────────┐
- │               │
- ▼               ▼
-┌───────────────┐ ┌───────────────┐
-│    Python     │ │   Superset    │
-│ - Automation  │ │ - Dashboards  │
-│ - Anomaly ML  │ │ - Charts/KPIs │
-│ - Validation  │ │ - Read-only   │
-└───────┬───────┘ └───────────────┘
         │
         ▼
 ┌───────────────┐
 │ Generative AI │   (Explains anomalies,
-│ - Reports     │    generates insights,
-│ - Summaries   │    writes back to PostgreSQL)
+│ - Reports     │    generates insights)
 └───────────────┘
+
 ```
 
 
