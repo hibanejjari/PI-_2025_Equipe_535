@@ -761,6 +761,22 @@ it takes raw data from your database, applies business logic, and creates clean,
 | `tests/test_validation.py`   | Automated validation tests (pytest)          | Create manually → extend regularly with new tests |
 | `./.gitlab-ci.yml`           | GitLab CI/CD pipeline (dbt + Python checks)  | Create manually → adjust if pipeline steps change |
 
+Updated :
+
+## Files to Modify or Add
+
+| Category         | Files / Paths | Purpose |
+|------------------|---------------|---------|
+| **Superset**     | `superset_config.py`<br>`superset-docker-compose.yml`<br>`superset-Dockerfile`<br>`superset-docker.env` | Superset configuration & Docker setup |
+| **AI Service**   | `ai_service/app.py`<br>`ai_service/db.py`<br>`ai_service/query_agent.py`<br>`ai_service/requirements.txt`<br>`ai_service/superset_api.py` | AI service logic & Superset API integration |
+| **Scripts**      | `scripts/superset_check.py`<br>`scripts/superset_fetch.py`<br>`scripts/superset_ai_check.py` | Superset validation & dataset fetching |
+| **Models (dbt)** | `models/example/*.sql`<br>`models/example/schema.yml` | SQL transformations & schema definitions |
+| **Seeds**        | `seeds/*.csv` (`gantt.csv`, `project_timeline_big.csv`) | Input datasets for dbt |
+| **Tests**        | `tests/test_validation.py` | Automated validation tests |
+| **Pipeline**     | `.gitlab-ci.yml`<br>`dbt_project.yml`<br>`README.md` | CI/CD pipeline & documentation |
+
+
+
 ### Architecture with Real Database
 
 ```text
