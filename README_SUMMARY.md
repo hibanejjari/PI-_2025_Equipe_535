@@ -168,5 +168,4 @@ The pipeline can be extended with **Generative AI** to improve explainability:
 
 ---
 
-For **detailed guides, troubleshooting, CI/CD, and security practices**, see [`README_SUMMARY.md`](README_SUMMARY.md).  
 For **contributor workflow (branches, pulls, pushes)**, see [`GIT_WORKFLOW.md`](GIT_WORKFLOW.md).  
