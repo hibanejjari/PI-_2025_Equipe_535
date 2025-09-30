@@ -1,4 +1,7 @@
+# Ignore Python cache
+__pycache__/
+*.pyc
 
-target/
-dbt_packages/
-logs/
+# Ignore secrets
+*.env
+.env
