@@ -238,6 +238,7 @@ SELECT * FROM hello_world;
 ---
 
  After this, we will load **real raw data** into PostgreSQL, build transformations in **dbt**, and visualize them in **Superset dashboards**.
+ # [📄 View TEST.pdf](./TEST.pdf)
 
 # Apache Superset – Project 110 Guide (Windows)
 
@@ -958,12 +959,12 @@ ________________________________________
 
 When deployed in production, Superset is placed behind a secure network (VPN or firewall) and served via HTTPS. This ensures that data in transit between the user’s browser and Superset is encrypted, protecting confidential information from interception
 
-Test with SuperSet :
+First test with SuperSet :
 
 <img width="1060" height="464" alt="image" src="https://github.com/user-attachments/assets/9e57cba4-2a8b-49d9-907b-67cf51140189" />
 
-[📄 View TEST.pdf](./TEST.pdf)
+
 
 
   
->>>>>>> a7d31d284143c9dee2fc9434f47adaf8f362d0a8
+
