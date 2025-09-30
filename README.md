@@ -76,8 +76,6 @@ Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent n
 ## Table of Contents
 
 ### Introduction
-- [Overview](#overview)  
-  General context and purpose of the project.  
 
 - [Problem Statement & Objectives](#problem-statement--objectives)  
   Why this project exists, challenges addressed, and the main goals (ESILV + Vinci Energies).  
