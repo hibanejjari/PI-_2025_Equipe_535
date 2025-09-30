@@ -73,7 +73,7 @@ Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent n
 
 ### Setup
 - [Setup & Prerequisites](#1-prerequisites)  
-  InstallING required tools (Docker, Git, Python, WSL2) and verify they work.
+  Installing required tools (Docker, Git, Python, WSL2) and verify they work.
 
 -> **Simpler, Summarized Route**
 
