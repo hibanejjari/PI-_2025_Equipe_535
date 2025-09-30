@@ -751,6 +751,7 @@ it takes raw data from your database, applies business logic, and creates clean,
 
 ### Files to Modify or Add Once Real Database Is Connected
 
+
 | File / Path                  | Purpose                                      | Notes (creation & updates) |
 |------------------------------|----------------------------------------------|-----------------------------|
 | `my_project/models/src.yml`  | Define raw tables from the database          | Create manually → update when new raw tables appear |
@@ -764,6 +765,7 @@ it takes raw data from your database, applies business logic, and creates clean,
 
 
 ### Updated : Files to Modify or Add
+
 
 | Category         | Files / Paths | Purpose |
 |------------------|---------------|---------|
