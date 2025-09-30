@@ -11,37 +11,27 @@ It integrates:
 - **Generative AI (future extension)** → natural-language anomaly explanations, summaries, and auto-reports  
 
 ### Workflow
+
 ```text
-┌───────────────┐     ┌───────────────┐
-│   Raw Data    │ ──► │      dbt      │
-└───────────────┘     └───────┬───────┘
-                              │
-                              ▼
-                     ┌───────────────┐
-                     │  PostgreSQL   │
-                     │ - Stores raw  │
-                     │   & clean     │
-                     └───────┬───────┘
-                 ┌───────────┴───────────┐
-                 │                       │
-                 ▼                       ▼
-        ┌───────────────┐       ┌───────────────┐
-        │    Python     │       │   Superset    │
-        │ - Automation  │       │ - Dashboards  │
-        │ - Anomaly ML  │       │ - Charts/KPIs │
-        │ - Validation  │       │   (read-only) │
-        └───────┬───────┘       └───────────────┘
-                │
-                ▼
-        ┌───────────────┐
-        │ Generative AI │
-        │ - Explanations│
-        │ - Summaries   │
-        │ - Auto-Reports│
-        └───────────────┘
+┌───────────────┐
+│   Superset    │   (Dashboards & KPIs already built)
+└───────┬───────┘
+        │
+        ▼
+┌───────────────┐
+│    Python     │   (Queries dashboards via API,
+│ - Validation  │    compares to reference data,
+│ - Anomaly ML  │    flags inconsistencies)
+└───────┬───────┘
+        │
+        ▼
+┌───────────────┐
+│ Generative AI │   (Explains anomalies,
+│ - Reports     │    generates insights)
+└───────────────┘
+
 ```
 
----
 
 ## Table of Contents
 1. [Overview](#overview)  
