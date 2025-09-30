@@ -775,7 +775,20 @@ it takes raw data from your database, applies business logic, and creates clean,
 | **Tests**        | `tests/test_validation.py` | Automated validation tests |
 | **Pipeline**     | `.gitlab-ci.yml`<br>`dbt_project.yml`<br>`README.md` | CI/CD pipeline & documentation |
 
+#### AI Service
 
+The `ai_service/` folder contains a lightweight Flask app that integrates with OpenAI and the Superset API.  
+It allows querying Superset dashboards and generating summaries or insights automatically.
+
+##### How to Run
+1. Install dependencies:
+   ```bash
+   pip install -r ai_service/requirements.txt
+   ```
+2. Start the service:
+```bash
+   uvicorn app:app --reload --port 5000
+```
 
 ### Architecture with Real Database
 
