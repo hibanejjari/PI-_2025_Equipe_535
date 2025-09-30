@@ -81,14 +81,13 @@ Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent n
   Why this project exists, challenges addressed, and the main goals (ESILV + Vinci Energies).  
 
 - [Architecture with Real Database](#architecture-with-real-database)
-
   Visual diagram of how dbt, PostgreSQL, Python, Superset, and Generative AI interact.  
 
 ---
 
 ### Setup
 - [Setup & Prerequisites](#1-prerequisites)  
-  Install required tools (Docker, Git, Python, WSL2) and verify they work.
+  InstallING required tools (Docker, Git, Python, WSL2) and verify they work.
 
 -> **Simpler, Summarized Route**
 
@@ -98,25 +97,25 @@ Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent n
 -> **More Detailed Guides**
 
 - [Superset Setup](#apache-superset--project-110-guide-windows)  
-  Run Apache Superset with Docker, access the UI, and confirm the service is up.
+  Running Apache Superset with Docker, access the UI, and confirm the service is up.
 
 - [Setting up dbt with PostgreSQL](#setting-up-dbt-with-postgresql)  
-  Create a dbt project, configure `profiles.yml`, and connect dbt to PostgreSQL.  
+  Creating a dbt project, configure `profiles.yml`, and connect dbt to PostgreSQL.  
 
 ---
 
 ### Code & Implementation
 - [Working with the Real Database](#working-with-the-real-database)  
-  Connect raw tables, define sources, and write dbt transformation models.
+  Connecting raw tables, define sources, and write dbt transformation models.
 
 - [Files to Modify or Add](#files-to-modify-or-add-once-real-database-is-connected)  
-  Key files to update (`models/src.yml`, `profiles.yml`, `superset_check.py`, `.gitlab-ci.yml`).  
+  Key files to update.  
 
 - [Python Integration](#6-python-proof-of-concept--validate-dashboard-data)  
-  Use Python scripts for anomaly detection, Superset API validation, and automation.
+  Using Python scripts for anomaly detection, Superset API validation, and automation.
 
 - [CI/CD Pipeline](#7-cicd-skeleton-gitlab)  
-  Add automated checks using `pytest` and GitLab CI/CD.
+  Adding automated checks using `pytest` and GitLab CI/CD.
 
 - [Generative AI Extension](#generative-ai-extension-ideas)  
   Optional layer to explain anomalies, summarize dashboards, and generate reports.  
