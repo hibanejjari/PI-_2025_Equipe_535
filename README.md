@@ -56,7 +56,6 @@ Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent n
 ```
 
 
-**Raw data is first transformed by dbt and stored in PostgreSQL, then Python reads from PostgreSQL to run automation and anomaly detection and writes results back, and finally Superset connects to PostgreSQL in read-only mode to visualize both the clean and enriched data.**
 
 
 
