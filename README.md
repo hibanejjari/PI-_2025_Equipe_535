@@ -82,7 +82,8 @@ Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent n
 - [Problem Statement & Objectives](#problem-statement--objectives)  
   Why this project exists, challenges addressed, and the main goals (ESILV + Vinci Energies).  
 
-- [Pipeline Architecture](#pipeline-architecture)  
+- [Architecture with Real Database](#architecture-with-real-database)
+
   Visual diagram of how dbt, PostgreSQL, Python, Superset, and Generative AI interact.  
 
 ---
