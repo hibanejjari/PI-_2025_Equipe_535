@@ -144,7 +144,7 @@ Les dashboards Superset sont essentiels, mais des anomalies ou erreurs peuvent n
 1. **Start Superset (Docker)**
 ```bash
 git clone https://github.com/apache/superset.git
-cd C:\Users\superset
+cd superset
 docker compose -f docker-compose-non-dev.yml up -d
 ```
 Open: [http://localhost:8088](http://localhost:8088)  
