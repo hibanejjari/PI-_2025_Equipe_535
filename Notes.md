@@ -40,7 +40,9 @@ cd superset
 From the project folder:
 
 ```powershell
-docker compose -f docker-compose-non-dev.yml up -d
+docker compose -f docker-compose-non-dev.yml pull
+docker compose -f docker-compose-non-dev.yml up -d --build
+
 ```
 
 ---
