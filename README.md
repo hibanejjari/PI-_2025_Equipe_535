@@ -952,5 +952,34 @@ First test with SuperSet :
 
 
 
+  # Updated plan 
   
+## Dashboard Validation & Anomaly Detection  
 
+Our pipeline treats Superset dashboards as a **black box** and verifies whether their outputs are correct.  
+We will have access to anonymized data provided by the partner, but we must test dashboards carefully to ensure that KPIs are computed and displayed correctly.  
+
+### How it works  
+1. **Reference Data** – prepare a trusted dataset with expected KPI values.  
+   - This can be a simplified or anonymized export that still reflects the ground truth.  
+   - For example: counts, aggregated metrics, or synthetic values defined with the partner.  
+2. **Fetch Dashboard Data** – use Superset’s API to extract anonymized dashboard results.  
+3. **Compare** – join Superset results with the reference data and check for differences.  
+4. **Classify Results**  
+   - Match: values are identical  
+   - Mismatch anomaly: dashboard value differs from reference  
+   - Missing anomaly: value exists in one dataset but not the other  
+   - Statistical anomaly (optional): unusual spikes or outliers compared to historical trends  
+5. **Report** – generate a CSV or PDF with matches and anomalies.  
+
+### How We Test with Anonymized Data  
+- Use identifiers such as timestamps, region codes, or project IDs to align reference data with Superset outputs.  
+- Create test scenarios with intentionally incorrect or incomplete values to confirm anomaly detection works.  
+- Compare aggregated results (totals, averages, distributions) instead of raw records if detailed identifiers are removed by anonymization.  
+- Validate consistency over time, ensuring KPI trends remain stable unless justified.  
+
+### CI/CD Integration  
+- The validation script (`superset_check.py`) runs automatically in GitLab CI/CD.  
+- If mismatches are found, the pipeline fails and the anomaly report (`superset_vs_reference_report.csv`) is stored as an artifact for review.  
+
+This ensures dashboards remain reliable, even when only anonymized data is available.  
