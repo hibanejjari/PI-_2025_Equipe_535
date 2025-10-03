@@ -117,6 +117,27 @@ Testing for anomalies with supersett and a csv filled with anamolies on purpose 
 <img width="1464" height="615" alt="image" src="https://github.com/user-attachments/assets/3fbda885-9aa9-4912-9bb2-671130e1ac9d" />
 
 
+cloning and pushing to branch : 
+
+<img width="1470" height="702" alt="image" src="https://github.com/user-attachments/assets/2e85276a-23e2-4fc8-9476-ea2f88e53cb8" />
+
+<img width="1465" height="66" alt="image" src="https://github.com/user-attachments/assets/2e817414-3b4c-4ed3-b67f-a6d814e1270e" />
+
+
+<img width="1473" height="674" alt="image" src="https://github.com/user-attachments/assets/6dcf81db-c5e3-4741-9244-b3b72d1d4602" />
+
+### Git 
+
+```powershell
+
+git checkout Hiba                # your branch
+git add scripts/ok.py test_data.csv
+git commit -m "Add anomaly detection test with test_data.csv" # your comment
+git pull origin Hiba            
+git push origin Hiba
+
+```         
+
 
 
 
