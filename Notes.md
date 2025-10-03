@@ -112,8 +112,14 @@ Instead of PostgreSQL, we uploaded a **CSV** with columns:
 Current state: Superset + script fully working locally, code tracked on GitHub.
 
 After cloning git, inside your git folder created in your folder : 
+
+```
 ..\venv\Scripts\activate
+```
+
+
 Testing for anomalies with supersett and a csv filled with anamolies on purpose :
+
 <img width="1464" height="615" alt="image" src="https://github.com/user-attachments/assets/3fbda885-9aa9-4912-9bb2-671130e1ac9d" />
 
 
