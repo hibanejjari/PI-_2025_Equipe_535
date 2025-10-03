@@ -98,3 +98,39 @@ for c in charts:
 
         if not anomalies_found:
             print("   ✅ No anomalies found")
+import sys
+import pandas as pd
+import numpy as np
+
+def detect_anomalies_from_rows(rows):
+    anomalies_found = False
+    if rows and isinstance(rows[0], dict):
+        for col in rows[0].keys():
+            try:
+                values = [float(r[col]) for r in rows if r[col] not in (None, "")]
+                if not values:
+                    continue
+                mean, std = np.mean(values), np.std(values)
+                anomalies = [
+                    {"value": v, "zscore": (v - mean) / (std + 1e-9)}
+                    for v in values if abs((v - mean) / (std + 1e-9)) > 2
+                ]
+                if anomalies:
+                    anomalies_found = True
+                    print(f"   ⚠️ Anomalies in column '{col}':")
+                    for a in anomalies:
+                        print("      ", a)
+            except (ValueError, TypeError):
+                continue
+    if not anomalies_found:
+        print("   ✅ No anomalies found")
+
+# ---- If user provides a CSV path, use that instead of Superset ----
+if len(sys.argv) > 1:
+    csv_path = sys.argv[1]
+    print(f"\n📂 Running anomaly detection on CSV: {csv_path}")
+    df = pd.read_csv(csv_path)
+    rows = df.to_dict(orient="records")
+    print(f"   → Loaded {len(rows)} rows from CSV")
+    detect_anomalies_from_rows(rows)
+    sys.exit(0)
