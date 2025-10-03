@@ -22,7 +22,7 @@ Replace `<your-branch>` with a meaningful name (use your name or the feature you
 git checkout -b <your-branch>
 ```
 
-## 3. Pull the latest changes from `main`
+## 3. Pull the latest changes from `main` (if needed but I don't think it is for now)
 Before pushing your updates, always make sure your branch is up to date with the `main` branch:
 ```
 git checkout main
@@ -42,7 +42,7 @@ git commit -m "Add my feature or fix"
 git push origin <your-branch>
 ```
 
-## 6. Open a Pull Request
+## 6. Open a Pull Request (for later codes)
 - Go to the repository on GitHub: [PI-_2025_Equipe_535](https://github.com/hibanejjari/PI-_2025_Equipe_535).  
 - Select your branch and click **New Pull Request**.  
 - Once reviewed and approved by the whole team, it will be merged into `main`.
