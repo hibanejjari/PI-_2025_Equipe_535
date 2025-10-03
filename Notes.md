@@ -86,5 +86,30 @@ Instead of PostgreSQL, we uploaded a **CSV** with columns:
 
 <img width="817" height="434" alt="image" src="https://github.com/user-attachments/assets/1b9e5f02-b3e7-4e16-84c4-e5cc5aa2008f" />
 
+# Progress Summary
+
+- Set up Apache Superset locally with Docker Compose.  
+- Created a test dashboard (ID 12) containing a **Table** and **Gantt** chart.  
+- Wrote `ok.py` to:
+  - Authenticate with Superset (`/api/v1/security/login`).
+  - Fetch dashboard metadata (`/api/v1/dashboard/{id}`).
+  - Extract chart IDs and names.
+  - Query chart data (`/api/v1/chart/data`).
+  - Run anomaly detection (z-score).
+  - Output either detected anomalies or ` No anomalies found`.  
+- Tested `ok.py` inside the virtual environment:
+  - Successfully fetched 2 charts (`Table`, `Gantt`).
+  - Retrieved 8 rows from each chart.
+  - Verified anomaly detection works (no anomalies reported).  
+- Cloned GitHub repo `PI-_2025_Equipe_535` and checked out branch **Hiba**.  
+- Created `scripts/` folder inside repo, moved `ok.py` there.  
+- Ran:
+  - `git add scripts/ok.py`
+  - `git commit -m "Add Superset anomaly validation script"`
+  - `git push origin Hiba`  
+- Confirmed script is now pushed to GitHub under `scripts/ok.py`.  
+
+Current state: Superset + script fully working locally, code tracked on GitHub.
+
 
 
