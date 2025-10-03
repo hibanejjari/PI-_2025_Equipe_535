@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+psycopg2-binary
+sqlalchemy
+openai
+pandas
+flask
+requests
+python-dotenv
+
+requests==2.31.0
+pandas==2.1.1
+scikit-learn==1.3.2
+
+python-dotenv==1.0.0   # to load .env files if you want secrets outside code
