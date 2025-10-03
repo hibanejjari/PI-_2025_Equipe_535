@@ -5,3 +5,4 @@ __pycache__/
 # Ignore secrets
 *.env
 .env
+venv/
