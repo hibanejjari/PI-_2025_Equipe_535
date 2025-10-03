@@ -111,9 +111,11 @@ Instead of PostgreSQL, we uploaded a **CSV** with columns:
 
 Current state: Superset + script fully working locally, code tracked on GitHub.
 
-After cloning git, inside your git folder created in your folder : 
+After cloning git and installing requirements inside the cloned repo, inside your git folder created in your folder : 
 
 ```
+pip install -r requirements.txt
+
 ..\venv\Scripts\activate
 ```
 
