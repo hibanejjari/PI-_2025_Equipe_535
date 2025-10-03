@@ -47,7 +47,7 @@ git push origin <your-branch>
 - Select your branch and click **New Pull Request**.  
 - Once reviewed and approved by the whole team, it will be merged into `main`.
 
-
-<img width="1487" height="715" alt="image" src="https://github.com/user-attachments/assets/e6252757-8d0b-4a9b-905d-e5b3677dc7d8" />
 <img width="1347" height="286" alt="image" src="https://github.com/user-attachments/assets/2dc076fd-77fd-42ca-8127-17348b8997b7" />
 
+
+<img width="1487" height="715" alt="image" src="https://github.com/user-attachments/assets/e6252757-8d0b-4a9b-905d-e5b3677dc7d8" />
