@@ -84,4 +84,7 @@ docker compose -f docker-compose-non-dev.yml down
 Instead of PostgreSQL, we uploaded a **CSV** with columns:
 (to do so you need to edit settings of database to allow import)
 
+<img width="817" height="434" alt="image" src="https://github.com/user-attachments/assets/1b9e5f02-b3e7-4e16-84c4-e5cc5aa2008f" />
+
+
 
