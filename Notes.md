@@ -100,6 +100,13 @@ After cloning git and installing requirements inside the cloned repo, inside you
 
 ```
 pip install -r requirements.txt
+```
+
+From the project root (`PI-_2025_Equipe_535` folder):
+
+```powershell
+python -m venv ..\venv
+
 
 ..\venv\Scripts\activate
 ```
