@@ -1,0 +1,9 @@
+Task,Start Date,End Date,Duration (days),Phase
+Cadrage & Architecture,2025-10-10,2025-10-25,15,Scoping
+Technical Proof of Concept (POC),2025-10-25,2025-11-15,21,POC
+Industrialisation + CI/CD,2025-11-15,2025-12-15,30,Industrialisation
+Finalisation & Testing,2025-12-15,2026-01-22,38,Finalisation
+Kick-off Meeting,2025-10-06,2025-10-06,1,Milestone
+Follow-up Meetings (every 3 weeks),2025-10-20,2026-01-10,,Recurring
+Showroom Presentation,2026-01-22,2026-01-22,1,Milestone
+Closing Meeting,2026-01-19,2026-01-23,5,Milestone
