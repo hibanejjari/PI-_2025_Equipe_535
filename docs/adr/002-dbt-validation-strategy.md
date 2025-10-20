@@ -2,9 +2,8 @@
 
 - **Status**: Proposed  
 - **Date**: 2025-10-20  
-- **Authors**: Project 110 Team — VINCI Energies / Citeos  
-- **Related ADRs**: ADR-001 — Error Supervision and Validation Service  
-- **Systems Concerned**: dbt, ClickHouse, GitLab CI/CD, Superset  
+- **Authors**: Adrien  
+- **Related Systems**: dbt, ClickHouse, GitLab CI/CD, Superset 
 
 ---
 
@@ -128,13 +127,13 @@ The chosen multi-layer approach provides both **rigor and flexibility**, support
 
 | Step | Description | Responsible | Target |
 |------|--------------|-------------|---------|
-| 1 | Define test taxonomy (schema, logic, freshness) | Data Engineering Team | Week 1 |
-| 2 | Implement dbt built-in tests | Dev Team | Week 2–3 |
-| 3 | Add custom SQL validation tests | Dev Team | Week 4 |
-| 4 | Integrate dbt test step into GitLab pipeline | DevOps Team | Week 5 |
-| 5 | Parse and export dbt test results to supervision service | Dev Team | Week 6 |
-| 6 | Generate automated reports | Supervision Service | Week 7 |
-| 7 | Evaluate AI-assisted validation prototype (optional) | AI Specialist | Phase 2 |
+| 1 | Define test taxonomy (schema, logic, freshness) | ESILV & Citeos team | Week 1 |
+| 2 | Implement dbt built-in tests | ESILV Team | Week 2–3 |
+| 3 | Add custom SQL validation tests | ESILV Team | Week 4 |
+| 4 | Integrate dbt test step into GitLab pipeline | ESILV Team | Week 5 |
+| 5 | Parse and export dbt test results to supervision service | ESILV Team | Week 6 |
+| 6 | Generate automated reports | ESILV Team | Week 7 |
+| 7 | Evaluate AI-assisted validation prototype (optional) | ESILV Team | Phase 2 |
 
 **Rollback Plan:**  
 If test execution introduces excessive runtime or instability, revert to nightly batch validation until optimizations are applied.

@@ -2,8 +2,7 @@
 
 - **Status**: Proposed  
 - **Date**: 2025-10-20  
-- **Authors**: Project 110 Team — VINCI Energies / Citeos  
-- **Repository**: [github.com/.../Project110](#)  
+- **Authors**: Adrien  
 - **Related Systems**: Airflow, dltHub, ClickHouse, dbt, Apache Superset  
 
 ---
@@ -103,11 +102,11 @@ Given the need for automated version-controlled validation and clear test report
 
 | Action | Responsible | Target Date |
 |--------|--------------|--------------|
-| Define validation requirements & test types | Data Engineering Team | Week 1 |
-| Implement prototype of supervision service (Python) | Dev Team | Week 2–4 |
-| Integrate with GitLab CI/CD pipeline | DevOps Team | Week 5 |
-| Generate automated validation reports (PDF/logs) | Dev Team | Week 6 |
-| Optional: Add AI anomaly detection module | AI Specialist | Phase 2 |
+| Define validation requirements & test types | ESILV & Citeos Team | Week 1 |
+| Implement prototype of supervision service (Python) | ESILV Team | Week 2–4 |
+| Integrate with GitLab CI/CD pipeline | ESILV Team | Week 5 |
+| Generate automated validation reports (PDF/logs) | ESILV Team | Week 6 |
+| Optional: Add AI anomaly detection module | ESILV Team | Phase 2 |
 
 **Rollback Plan:**  
 If the service introduces blocking complexity, revert to embedded dbt + Airflow test hooks while maintaining validation logic in scripts.
