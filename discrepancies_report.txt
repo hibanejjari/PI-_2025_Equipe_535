@@ -1,0 +1,56 @@
+=== RAPPORT DE COMPARAISON SUPERSET vs POSTGRESQL ===
+Date du rapport : 2025-11-16 22:18:32
+
+Nombre d'écarts détectés : 12
+
+Détails des écarts :
+--------------------------------------------------
+ID Produit: 101, Date: 2025-11-01
+  - Superset: 12000.0 (vs PostgreSQL: nan)
+  - Écart: nan
+
+ID Produit: 102, Date: 2025-11-01
+  - Superset: 3500.0 (vs PostgreSQL: nan)
+  - Écart: nan
+
+ID Produit: 103, Date: 2025-11-02
+  - Superset: 750.0 (vs PostgreSQL: nan)
+  - Écart: nan
+
+ID Produit: 104, Date: 2025-11-02
+  - Superset: 400.0 (vs PostgreSQL: nan)
+  - Écart: nan
+
+ID Produit: 101, Date: 2025-11-03
+  - Superset: 11500.0 (vs PostgreSQL: nan)
+  - Écart: nan
+
+ID Produit: 103, Date: 2025-11-03
+  - Superset: 800.0 (vs PostgreSQL: nan)
+  - Écart: nan
+
+ID Produit: 101, Date: 2025-11-01
+  - Superset: nan (vs PostgreSQL: 12000.0)
+  - Écart: nan
+
+ID Produit: 102, Date: 2025-11-01
+  - Superset: nan (vs PostgreSQL: 3500.0)
+  - Écart: nan
+
+ID Produit: 103, Date: 2025-11-02
+  - Superset: nan (vs PostgreSQL: 800.0)
+  - Écart: nan
+
+ID Produit: 104, Date: 2025-11-02
+  - Superset: nan (vs PostgreSQL: 400.0)
+  - Écart: nan
+
+ID Produit: 101, Date: 2025-11-03
+  - Superset: nan (vs PostgreSQL: 11500.0)
+  - Écart: nan
+
+ID Produit: 103, Date: 2025-11-03
+  - Superset: nan (vs PostgreSQL: 850.0)
+  - Écart: nan
+
+=== FIN DU RAPPORT ===
