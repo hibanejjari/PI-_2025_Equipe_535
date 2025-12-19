@@ -6,7 +6,7 @@ from pathlib import Path
 SUPERSET_URL = "http://localhost:8088"  # Your Superset Base URL
 USERNAME = "admin"
 PASSWORD = "admin"
-CHART_ID = 120
+CHART_ID = 102
 
 # 1. Get the directory where THIS script is located
 # 2. .parent moves up to the project root
