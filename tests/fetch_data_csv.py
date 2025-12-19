@@ -2,16 +2,16 @@ import requests
 import json
 
 # --- CONFIGURATION ---
-SUPERSET_URL = "http://localhost:8088"  # Your Superset Base URL
+SUPERSET_URL = "http://localhost:8088"
 USERNAME = "admin"
 PASSWORD = "admin"
 CHART_ID = 102
-OUTPUT_FILE = f"chart_{CHART_ID}_data.json" # Name of the file to save
+OUTPUT_FILE = f"chart_{CHART_ID}_data.csv" # Change extension to .csv
 
 def fetch_and_save_data():
     session = requests.Session()
 
-    # 1. AUTHENTICATION
+    # 1. AUTHENTICATION (Same as before)
     print(f"🔐 Authenticating as {USERNAME}...")
     login_url = f"{SUPERSET_URL}/api/v1/security/login"
     try:
@@ -38,16 +38,15 @@ def fetch_and_save_data():
         chart_resp = session.get(chart_url)
         chart_resp.raise_for_status()
         
-        # Parse the stored query context
         raw_context = chart_resp.json().get("result", {}).get("query_context")
         if not raw_context:
-            print("❌ No query context found. Please ensure the chart is saved.")
+            print("❌ No query context found.")
             return
             
         query_payload = json.loads(raw_context)
         
-        # Ensure we get JSON back
-        query_payload["result_format"] = "json"
+        # --- KEY CHANGE 1: Request CSV format ---
+        query_payload["result_format"] = "csv"
         query_payload["result_type"] = "full"
 
     except Exception as e:
@@ -55,26 +54,25 @@ def fetch_and_save_data():
         return
 
     # 3. FETCH DATA
-    print(f"🚀 Executing query...")
+    print(f"🚀 Executing query (requesting CSV)...")
     data_url = f"{SUPERSET_URL}/api/v1/chart/data"
     try:
         data_resp = session.post(data_url, json=query_payload)
         data_resp.raise_for_status()
         
-        # Extract just the data list from the response envelope
-        result_envelope = data_resp.json()
-        final_data = result_envelope['result'][0]['data']
+        # --- KEY CHANGE 2: Handle raw text instead of .json() ---
+        # When result_format is 'csv', Superset returns the CSV data as the response body directly.
+        csv_data = data_resp.text
         
-        # 4. SAVE TO JSON FILE
-        print(f"💾 Saving {len(final_data)} records to '{OUTPUT_FILE}'...")
+        # 4. SAVE TO CSV FILE
+        print(f"💾 Saving data to '{OUTPUT_FILE}'...")
         with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
-            json.dump(final_data, f, indent=4)
+            f.write(csv_data)
             
-        print("✅ Done! File saved successfully.")
+        print("✅ Done! CSV file saved successfully.")
 
     except requests.exceptions.RequestException as e:
         print(f"❌ Failed to fetch data: {e}")
-        print(f"Response: {data_resp.text}")
 
 if __name__ == "__main__":
     fetch_and_save_data()
