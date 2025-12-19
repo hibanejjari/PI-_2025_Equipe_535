@@ -10,15 +10,21 @@ from scripts.standardization_v2 import Standardizer
 
 # --- EXAMPLE USAGE ---
 
+target_schema = ["timestamp", "metric_value"]
+std = Standardizer(target_columns=target_schema)
+
 # Define how raw sources map to your "Standard" format
-mapping_table = {
+ch_mapping = {
     "Time": "timestamp",
     "Value": "metric_value",
 }
 
-std = Standardizer(mapping_table)
+ss_mapping = {
+    "Time": "timestamp", 
+    "SUM(New Members)": "metric_value"
+}
 
-# 1. Initialize the manager
+# 1. Initialize Clickhouse
 ch_manager = ClickHouseManager(
     host='localhost', 
     port=8123, 
@@ -27,7 +33,6 @@ ch_manager = ClickHouseManager(
 )
 
 # 2. Define df_ch by fetching the table
-# This uses the method we built in Step 2
 df_ch = ch_manager.fetch_table("test_data")
 
 print("\nClickHouse Data successfully loaded into df_ch.\n")
@@ -43,8 +48,10 @@ print("\nSuperset Data successfully loaded into df_ss.\n")
 print(df_ss.head())
 
 # Standardize both
-clean_ch = std.process(df_ch)
-clean_ss = std.process(df_ss)
+clean_ch = std.process(df_ch, ch_mapping)
+clean_ss = std.process(df_ss, ss_mapping)
 
 print("\nStandardized with Signatures:")
 print(clean_ch[['row_signature', 'timestamp', 'metric_value']].head())
+print("\n")
+print(clean_ss[['row_signature', 'timestamp', 'metric_value']].head())
