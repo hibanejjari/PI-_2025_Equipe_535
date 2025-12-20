@@ -3,11 +3,12 @@ import numpy as np
 import hashlib
 
 class Standardizer:
-    def __init__(self, target_columns):
+    def __init__(self, target_columns, precision=4):
         """
         :param target_columns: List of columns the final output MUST have.
         """
         self.target_columns = sorted(target_columns)
+        self.precision = precision
 
     def _generate_signature(self, row):
         """Creates a SHA256 hash of the row content."""
@@ -46,8 +47,7 @@ class Standardizer:
             
             # Normalize Numeric Precision
             if pd.api.types.is_numeric_dtype(df[col]):
-                df[col] = df[col].astype(float).round(4)
-
+                df[col] = df[col].astype(float).round(self.precision)
         # Handle Nulls consistently
         df = df.fillna("null").replace(["none", "nan", "", "nan", "None"], "null")
 
