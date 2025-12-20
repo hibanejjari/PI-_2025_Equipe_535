@@ -6,6 +6,7 @@ class Standardizer:
     def __init__(self, target_columns, precision=4):
         """
         :param target_columns: List of columns the final output MUST have.
+        :param precision: Value for numerical columns rounding, 10^-4 by default
         """
         self.target_columns = sorted(target_columns)
         self.precision = precision
