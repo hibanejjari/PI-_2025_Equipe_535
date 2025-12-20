@@ -66,7 +66,7 @@ class ClickHouseManager:
             """
             self.client.command(create_query)
 
-        # 2. Insert Data (Works for both cases now)
+        # 2. Insert Data
         self.client.insert(table_name, df)
         print(f"✅ Successfully imported {len(df)} rows into '{table_name}'.")  
 
@@ -105,7 +105,7 @@ class ClickHouseManager:
             """
             self.client.command(create_query)
 
-        # 2. Insert Data (Works for both cases now)
+        # 2. Insert Data
         self.client.insert(table_name, df)
         print(f"✅ Successfully imported {len(df)} rows into '{table_name}'.")        
 
