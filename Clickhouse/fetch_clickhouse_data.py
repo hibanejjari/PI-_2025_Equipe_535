@@ -33,65 +33,81 @@ class ClickHouseManager:
 
     def import_csv(self, file_path, table_name):
         # 1. Read data and attempt to parse dates
-        df = pd.read_csv(file_path, parse_dates=True)
+        df = pd.read_csv(file_path)
         
-        # Ensure 'Time' or date columns are actual datetime objects for ClickHouse
+        # Ensure 'Time' or date columns are actual datetime objects
         for col in df.columns:
             if 'time' in col.lower() or 'date' in col.lower():
                 df[col] = pd.to_datetime(df[col])
 
-        # 2. Build the Column Definitions
-        cols_definition = ", ".join([
+        # Check if the table already exists in ClickHouse
+        # Returns 1 if it exists, 0 otherwise
+        table_exists = self.client.command(f"EXISTS TABLE {table_name}")
+
+        if table_exists:
+            # OPTION A: Table exists -> Wipe data but keep schema
+            print(f"🧹 Table '{table_name}' exists. Truncating data...")
+            self.client.command(f"TRUNCATE TABLE {table_name}")
+        else:
+            # OPTION B: Table does not exist -> Create from scratch
+            print(f"🏗️ Table '{table_name}' not found. Creating new table...")
+            
+            # Build the Column Definitions
+            cols_definition = ", ".join([
                 f"`{col}` {self._map_dtype(col, df[col].dtype)}" 
                 for col in df.columns
             ])
-        
-        # 3. Create Table (using first column as the Order By key)
-        create_query = f"""
-        CREATE TABLE IF NOT EXISTS {table_name} (
-            {cols_definition}
-        ) ENGINE = MergeTree() 
-        ORDER BY `{df.columns[0]}`
-        """
-        
-        print(f"Executing: {create_query}")
-        self.client.command(f"DROP TABLE IF EXISTS {table_name}")
-        self.client.command(create_query)
+            
+            create_query = f"""
+            CREATE TABLE {table_name} (
+                {cols_definition}
+            ) ENGINE = MergeTree() 
+            ORDER BY `{df.columns[0]}`
+            """
+            self.client.command(create_query)
 
-        # 4. Insert Data
+        # 2. Insert Data (Works for both cases now)
         self.client.insert(table_name, df)
-        print(f"Successfully imported {len(df)} rows into '{table_name}' automatically.")  
+        print(f"✅ Successfully imported {len(df)} rows into '{table_name}'.")  
 
     def import_excel(self, file_path, table_name):
         # 1. Read data and attempt to parse dates
-        df = pd.read_excel(file_path, parse_dates=True)
+        df = pd.read_excel(file_path)
         
-        # Ensure 'Time' or date columns are actual datetime objects for ClickHouse
+        # Ensure 'Time' or date columns are actual datetime objects
         for col in df.columns:
             if 'time' in col.lower() or 'date' in col.lower():
                 df[col] = pd.to_datetime(df[col])
 
-        # 2. Build the Column Definitions
-        cols_definition = ", ".join([
+        # Check if the table already exists in ClickHouse
+        # Returns 1 if it exists, 0 otherwise
+        table_exists = self.client.command(f"EXISTS TABLE {table_name}")
+
+        if table_exists:
+            # OPTION A: Table exists -> Wipe data but keep schema
+            print(f"🧹 Table '{table_name}' exists. Truncating data...")
+            self.client.command(f"TRUNCATE TABLE {table_name}")
+        else:
+            # OPTION B: Table does not exist -> Create from scratch
+            print(f"🏗️ Table '{table_name}' not found. Creating new table...")
+            
+            # Build the Column Definitions
+            cols_definition = ", ".join([
                 f"`{col}` {self._map_dtype(col, df[col].dtype)}" 
                 for col in df.columns
             ])
-        
-        # 3. Create Table (using first column as the Order By key)
-        create_query = f"""
-        CREATE TABLE IF NOT EXISTS {table_name} (
-            {cols_definition}
-        ) ENGINE = MergeTree() 
-        ORDER BY `{df.columns[0]}`
-        """
-        
-        print(f"Executing: {create_query}")
-        self.client.command(f"DROP TABLE IF EXISTS {table_name}")
-        self.client.command(create_query)
+            
+            create_query = f"""
+            CREATE TABLE {table_name} (
+                {cols_definition}
+            ) ENGINE = MergeTree() 
+            ORDER BY `{df.columns[0]}`
+            """
+            self.client.command(create_query)
 
-        # 4. Insert Data
+        # 2. Insert Data (Works for both cases now)
         self.client.insert(table_name, df)
-        print(f"Successfully imported {len(df)} rows into '{table_name}' automatically.")        
+        print(f"✅ Successfully imported {len(df)} rows into '{table_name}'.")        
 
     def fetch_table(self, table_name):
         """Fetches an entire table from ClickHouse and returns a Pandas DataFrame."""
